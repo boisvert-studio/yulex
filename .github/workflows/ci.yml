@@ -1,0 +1,8 @@
+name: CI
+
+on:
+  pull_request:
+
+jobs:
+  Lint:
+    uses: finsweet/workflow-ci-lint/.github/workflows/lint.yml@main

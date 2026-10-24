@@ -1,0 +1,15 @@
+{
+  "name": "yulex-qa",
+  "version": "1.0.0",
+  "scripts": {
+    "baseline:live": "node run.mjs --baseline --target live",
+    "qa": "node run.mjs"
+  },
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "@playwright/test": "1.63.0",
+    "pixelmatch": "^8.0.0",
+    "pngjs": "^7.0.0"
+  }
+}

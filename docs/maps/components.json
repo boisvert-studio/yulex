@@ -1,0 +1,93 @@
+{
+ "status": "proposed for Gate 1, 2026-10-23",
+ "components": [
+  {
+   "name": "Global / Styles",
+   "status": "new",
+   "where": "Every page",
+   "classes": "global-styles, global-styles_default, global-styles_custom",
+   "props": "None",
+   "note": "V3 component with the two embeds. The custom embed holds the swash, hover and underline rules, the border model and the module state CSS. Replaces the 12 per-page style blocks and the duplicated site-footer copy."
+  },
+  {
+   "name": "Global / Nav",
+   "status": "rename",
+   "where": "Every page (14)",
+   "classes": "nav_*",
+   "props": "None",
+   "note": "Today « Navbar ». Rename classes per the map; tag header."
+  },
+  {
+   "name": "Global / Footer",
+   "status": "rename",
+   "where": "Every page (14)",
+   "classes": "footer_*",
+   "props": "None (13 generic props removed)",
+   "note": "Today « Footer » with Image…Image 9 and Title…Title 4 props that never change. The column reads « Expertises » everywhere (decided), so the one override goes too. Tag footer."
+  },
+  {
+   "name": "Section / Page Header",
+   "status": "new",
+   "where": "Équipe, Expertises, Affiliations, À propos, Contenus, Contact",
+   "classes": "page-header_title, page-header_subtitle, page-header_description",
+   "props": "Title (slot), Subtitle (text), Description (rich text), Show description (visibility)",
+   "note": "Title is a slot so each page keeps its h1 with the three highlighted words; a text prop can't carry the highlight spans. Verify slots in stage 1; fallback: Title as rich text if highlight spans survive, else keep the header as classes."
+  },
+  {
+   "name": "Section / Section Header",
+   "status": "new",
+   "where": "Accueil, Équipe, Expertises, profile and expertise templates",
+   "classes": "section-header_*",
+   "props": "Title (text), Subtitle (text)",
+   "note": "h2 with heading-style-h1. On templates the props bind to CMS fields (the related-content heading)."
+  },
+  {
+   "name": "Card / Person",
+   "status": "new",
+   "where": "Équipe grid, home team grid",
+   "classes": "person-card_*",
+   "props": "Image (image), Name (text), Title (text), Link (link); variant Size: md / sm",
+   "note": "Figma Card (md, sm). Placed inside each Collection Item; props bound to the Équipier fields. Tone comes from CSS (list index), not a prop. The coverflow card is a different element (image only) and stays a class family."
+  },
+  {
+   "name": "Card / Post",
+   "status": "not a Component",
+   "where": "Accueil, Équipe, Contenus, profile, expertise and content templates",
+   "classes": "post-card_*, author-list_*, tag-list_*",
+   "props": "—",
+   "note": "It holds two nested Collection Lists (authors, expertise tags), which can't live inside a Component. Stays one shared class family, Figma Blog Post. Option: a Component without the nested lists, losing authors and tags on cards."
+  },
+  {
+   "name": "Tag list",
+   "status": "not a Component",
+   "where": "6 pages, 95 instances",
+   "classes": "tag-list_*",
+   "props": "—",
+   "note": "It is a Collection List. Optional: a small UI / Tag Component for the item inside it (Label, Link). Low value; not proposed."
+  },
+  {
+   "name": "Recent posts rows",
+   "status": "not a Component",
+   "where": "Accueil, Équipe, profile and expertise templates",
+   "classes": "post-rows_*, post-list_*",
+   "props": "—",
+   "note": "Three Collection Lists. Its heading is the Section Header Component; the rows stay classes. On templates they become the related-content rows (data-yx-related)."
+  },
+  {
+   "name": "UI / Button",
+   "status": "proposed extra",
+   "where": "Home hero, CTA cards (6)",
+   "classes": "button, button is-secondary, button_label, button_icon",
+   "props": "Label (text), Link (link); variant: Primary / Secondary",
+   "note": "Figma Button. CA pattern (variant by role, never by colour). Optional: only 7 instances."
+  },
+  {
+   "name": "Page Grid, Navigation Item, Post Author Link",
+   "status": "delete",
+   "where": "0 instances",
+   "classes": "—",
+   "props": "—",
+   "note": "Starter leftovers (register #27)."
+  }
+ ]
+}

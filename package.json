@@ -1,0 +1,54 @@
+{
+  "name": "yulex",
+  "version": "0.0.0",
+  "description": "Custom code for the Yulex Webflow site",
+  "homepage": "https://github.com/boisvert-studio/yulex#readme",
+  "license": "ISC",
+  "keywords": [],
+  "author": {
+    "name": "Danny Boisvert"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boisvert-studio/yulex.git"
+  },
+  "bugs": {
+    "url": "https://github.com/boisvert-studio/yulex/issues"
+  },
+  "type": "module",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development node ./bin/build.js",
+    "build": "cross-env NODE_ENV=production node ./bin/build.js",
+    "lint": "eslint ./src && prettier --check ./src",
+    "lint:fix": "eslint ./src --fix",
+    "check": "tsc --noEmit",
+    "format": "prettier --write ./src",
+    "update": "pnpm update -i -L -r"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.19.0",
+    "@finsweet/eslint-config": "^3.0.3",
+    "@finsweet/tsconfig": "^1.4.2",
+    "cross-env": "^7.0.3",
+    "esbuild": "^0.24.2",
+    "eslint": "^9.19.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.23.0"
+  },
+  "dependencies": {
+    "@finsweet/ts-utils": "^0.40.0"
+  },
+  "engines": {
+    "pnpm": ">=10"
+  },
+  "private": true
+}

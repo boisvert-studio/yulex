@@ -1,0 +1,4 @@
+node_modules/
+output/
+# Baselines hold screenshots and text of the live site (people's names and photos): kept locally, never committed.
+baseline/

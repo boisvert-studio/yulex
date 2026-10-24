@@ -1,0 +1,85 @@
+# Data-attribute contracts
+
+Every attribute the bundle reads or writes, per module. **Status: proposed, for review at Gate 1.** Nothing below is wired in Webflow yet.
+
+Rules for every module:
+
+- Modules start from `src/index.ts` inside `Webflow.push` and do nothing when their root attribute is absent.
+- **Modules read `data-yx-*` attributes and Webflow's own markers (`w--current`, `w-dyn-empty`), never class names.** Renaming a class in Webflow can't break a script.
+- **State goes out as data attributes** (`data-yx-slot`, `data-yx-tone`, `data-yx-ready`) or the `hidden` attribute. The CSS that styles that state lives in Webflow's global styles embed, so it's in place at first paint, before the deferred bundle runs. A copy of that CSS is kept in `docs/` once written.
+- **No interface text in the bundle.** Labels such as « Précédent » / « Suivant » are Webflow text, so the English locale translates them natively.
+- Attributes go on Collection Lists or plain blocks, never inside a Webflow Component (Collection Lists can't sit inside Components anyway).
+- A missing or malformed contract logs one `console.warn('[yx] …')` and leaves the page usable. No silent `return` on a broken contract.
+
+Breakpoints are Webflow's: desktop ≥ 992 px, tablet 768–991, mobile landscape 480–767, mobile portrait < 480. Modules use `matchMedia` with these values and re-run when a query changes.
+
+## coverflow.ts
+
+Team profile pages: the current person large, two neighbours on each side, wrapping around the list. Replaces the `Position`-driven script.
+
+| Attribute | On | Effect |
+|---|---|---|
+| `data-yx-coverflow` | the slider's Collection List items wrapper (`.w-dyn-items`); its direct children are the cards | Starts the module. The list may be sorted by anything (Created On, oldest first, decided). |
+| (Webflow) `w--current` | the link inside the current person's card | Read. Its card's index in the list is the current position. Webflow adds it natively. |
+| `data-yx-slot` | each visible card | Written: `-2` `-1` `0` `1` `2` (5 cards, ≥ 480 px) or `-1` `0` `1` (3 cards, < 480 px). Cards without it are hidden by CSS. Visible cards are moved into slot order. |
+| `data-yx-tone` | every card | Written: list index modulo 3 (`0` blue, `1` purple, `2` green). Matches the Équipe grid, which colours by the same index under the same sort. |
+| `aria-current="page"`, `tabindex="-1"` | the current card's link | Written. The current card isn't a tab stop that links to itself. |
+| `data-yx-ready` | the root | Written when laid out. `no-current` if no `w--current` link was found: the module warns and lays out from index 0. |
+
+Retired with this module: the hidden `[data-current-order]` and `[data-order]` divs, the stray `fs-list-element="list"` on the slider list, and the `Position` sort.
+
+CSS in the global embed: `[data-yx-coverflow] > :not([data-yx-slot]) { display: none }` (no flash of 21 cards before the script), slot sizes per breakpoint (72 / 108 / 288 px down to 3 cards within 343 px), tones from the Theme colour variables. The slider wrapper also gets `min-width: 0; overflow: hidden` in its native class as a backstop.
+
+## home-team.ts
+
+Home page team pyramid: shuffled on every load (kept, decided), with the « Découvrez notre équipe » card in the middle row.
+
+| Attribute | On | Effect |
+|---|---|---|
+| `data-yx-home-team` | the team Collection List items wrapper | Starts the module. |
+| `data-yx-home-team-cta` | the call-to-action card (a block next to the list) | Moved into the list by the module. The Finsweet `fs-list-*` attributes on the list and on this card are removed: one owner for its position. |
+| `data-yx-slot` | each visible item, the CTA included | Written: `0`…`n-1` in display order. CSS sizes the rows from it. |
+| `data-yx-tone` | each person card (not the CTA) | Written: person index modulo 3, counted without the CTA. |
+| `hidden` | the people beyond the visible count | Written. |
+| `data-yx-ready` | the root | Written when laid out. |
+
+Layout by width (CTA index in brackets): ≥ 1280 px, 13 items in rows 4 / 5 / 4 [6]; 768–1279 px, 7 items in rows 2 / 3 / 2 [3]; ≤ 767 px, one column of 5 items [2]. The mobile switch is at 767 px to match Webflow (today's script uses 768). The shuffle is an unbiased Fisher–Yates, run once per load; resizing re-lays out the same order.
+
+The grid columns and the dashed border model (container top and left, cell right and bottom) are CSS in the global embed and native classes. The script no longer draws borders or sets inline grid styles.
+
+## prevnext.ts
+
+A compact « Précédent / Suivant » bar on tablets and phones (below 992 px), where the Finsweet previous/next cards are hidden today. Contenu, Expertise, Affiliation and À propos templates.
+
+| Attribute | On | Effect |
+|---|---|---|
+| `data-yx-prevnext` | the bar (a native block, shown below 992 px by its class) | Starts the module. |
+| `data-yx-prevnext-link` | two links inside the bar, values `prev` and `next` | `href` written. The link text is Webflow text (localised natively). |
+| `data-yx-prevnext-label` | a text element inside each link | Written: the neighbour's title. |
+| `data-yx-prevnext-list` | the template's hidden Collection List items wrapper (the one carrying `fs-list-element="list"`) | Read. The item holding the `w--current` link is the current one; neighbours are index ± 1 with wrap-around, so the bar loops for real. |
+| `data-yx-prevnext-title` | the title element inside each hidden item | Read for the label. |
+| `data-yx-ready` | the bar | Written. `hidden` on the bar if the list has fewer than 2 items. |
+
+When Finsweet loads more items in the background (`fs-list-load="pagination"`, past 100 items), the module waits for Finsweet's list hook before reading the list. Desktop keeps the Finsweet cards and their dynamic fallbacks (decided).
+
+## related.ts
+
+Profile and expertise pages: three rows (articles, capsules, podcasts) of the content that person wrote or that's filed under that expertise, topped up to 3 with the latest of that type.
+
+| Attribute | On | Effect |
+|---|---|---|
+| `data-yx-related-section` | the section wrapper | Starts the module. |
+| `data-yx-related-heading` | two headings in the section, values `own` and `latest` | `own` is bound to the person's or expertise's name (« Contenus de … »). The module shows `own` when any row has an own item, else `latest`. |
+| `data-yx-related` | each row wrapper, value `article`, `capsule` or `podcast` | One row. |
+| `data-yx-related-own` | the row's filtered list items wrapper | Read. List settings: Auteur(s) (or Expertise(s)) contains the current item, Type = the row's type, newest first, limit 3. |
+| `data-yx-related-latest` | the row's latest list items wrapper | Read. Type = the row's type, newest first, limit 6 (3 plus up to 3 duplicates of own items). |
+| `hidden` | surplus latest items, and items duplicating an own item (same `href`) | Written, so each row shows exactly 3 when the collection has 3. |
+| `data-yx-ready` | the section | Written. |
+
+**Without the script** (CSS `:has()` in the global embed): if the own list has items, only it shows; if it's empty (`.w-dyn-empty`), the first 3 latest items show. The script adds the top-up and the de-duplication.
+
+**Webflow page limits (help centre, checked 2026-10-23):** 40 Collection Lists per page including nested ones, and **10 nested lists per page**. Six lists per template, each card with two nested lists (authors, expertise tags), would make 12 nested lists, over the limit. So: profile-page cards drop the author list and keep expertise tags; expertise-page cards drop the expertise tags and keep authors. Six nested lists each.
+
+## Global styles embed (no module)
+
+CSS only, keyed on classes, so it isn't part of the attribute contract: the title swash (Figma order blue, purple, green, counted with `:nth-of-type`), the hover and underline rules, the dashed border model, and the module state CSS above. It lives in one site-wide embed, per Client-First.

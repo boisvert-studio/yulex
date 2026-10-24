@@ -1,0 +1,35 @@
+{
+  "_comment": "One representative URL per page type. FR path shown; EN is prefixed with /en-ca. Add pages here (key must be unique; type groups pages for --pages). expectStatus defaults to 200. Optional paths.<locale> overrides the path for one locale (give it without the locale prefix). Optional discover {from, match, index} picks the path from the links on a live page at run time (index -1 = last).",
+  "pages": [
+    { "key": "home", "type": "home", "path": "/" },
+    { "key": "team", "type": "team", "path": "/equipe" },
+    { "key": "profile-1", "type": "profile", "discover": { "from": "/equipe", "match": "^/equipe/[^/]+$", "index": -1 }, "note": "Last profile linked from the team page (live), so no names live in this repo." },
+    { "key": "profile-2", "type": "profile", "discover": { "from": "/equipe", "match": "^/equipe/[^/]+$", "index": 0 }, "note": "First profile linked from the team page (live)." },
+    { "key": "expertises", "type": "expertises", "path": "/expertises" },
+    { "key": "expertise-item", "type": "expertise", "path": "/expertises/litige" },
+    { "key": "contents", "type": "contents", "path": "/contenus" },
+    {
+      "key": "content-item",
+      "type": "content",
+      "path": "/contenu/bonne-foi-droit-quebecois-decision-ponce",
+      "paths": { "en": "/contenu/women-in-law-the-challenges-around-the-world" },
+      "note": "The FR article has no EN version (404 on live), so EN uses an article that exists in both languages."
+    },
+    { "key": "affiliations", "type": "affiliations", "path": "/affiliations" },
+    { "key": "affiliation-item", "type": "affiliation", "path": "/affiliations/interlegal" },
+    { "key": "about", "type": "about", "path": "/a-propos" },
+    { "key": "about-item", "type": "about-item", "path": "/a-propos/notre-adn" },
+    { "key": "contact", "type": "contact", "path": "/contact" },
+    { "key": "legal-privacy", "type": "legal", "path": "/politique-de-confidentialite" },
+    { "key": "legal-terms", "type": "legal", "path": "/termes-et-conditions" },
+    { "key": "search", "type": "search", "path": "/search" },
+    { "key": "not-found", "type": "404", "path": "/this-page-does-not-exist-qa", "expectStatus": 404 }
+  ],
+  "masks": [
+    {
+      "selector": ".teammate-list",
+      "pages": ["home"],
+      "reason": "Team grid is shuffled on every load"
+    }
+  ]
+}

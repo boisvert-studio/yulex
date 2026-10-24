@@ -1,0 +1,1 @@
+"use strict";(()=>{var o=()=>{document.querySelector("[data-yx-coverflow]")};var e=()=>{document.querySelector("[data-yx-home-team]")};var r=()=>{document.querySelector("[data-yx-prevnext]")};var n=()=>{document.querySelector("[data-yx-related]")};window.Webflow||(window.Webflow=[]);window.Webflow.push(()=>{o(),e(),r(),n()});})();

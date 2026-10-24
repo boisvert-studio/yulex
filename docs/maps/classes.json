@@ -1,0 +1,2835 @@
+{
+ "status": "proposed for Gate 1, 2026-10-23",
+ "classes": [
+  {
+   "old": "body",
+   "new": "body (tag)",
+   "kind": "tag",
+   "group": "Core structure",
+   "note": "Typography moves to the body tag; the class goes. Client-First: page-wrapper instead of styling body.",
+   "pages": 14,
+   "uses": 14,
+   "tags": "body"
+  },
+  {
+   "old": "section",
+   "new": "section_[identifier]",
+   "kind": "custom",
+   "group": "Core structure",
+   "note": "One identifier per section (section_home-hero, section_listing, section_detail, section_related, …). Native Section element. Padding from Layout variables on the section class.",
+   "pages": 14,
+   "uses": 21,
+   "tags": "section"
+  },
+  {
+   "old": "container",
+   "new": "container-large",
+   "kind": "utility",
+   "group": "Core structure",
+   "note": "V3 container. Max width becomes Sizes / Container / large (120rem = 1920 px, today's cap). Its 24 px side padding moves to the section (global-padding). Replace the Webflow Container element (w-container) with a div.",
+   "pages": 14,
+   "uses": 23,
+   "tags": "div"
+  },
+  {
+   "old": "vertically-centered",
+   "new": "home-hero_component",
+   "kind": "custom",
+   "group": "Core structure",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "logomark",
+   "new": "home-hero_logo",
+   "kind": "custom",
+   "group": "Core structure",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "img"
+  },
+  {
+   "old": "list-container",
+   "new": "card-grid_component",
+   "kind": "custom",
+   "group": "Core structure",
+   "note": "Wraps a list plus its CTA card on the home page.",
+   "pages": 1,
+   "uses": 2,
+   "tags": "div"
+  },
+  {
+   "old": "navbar",
+   "new": "nav_component",
+   "kind": "custom",
+   "group": "Navbar (Global / Nav)",
+   "note": "Tag: header.",
+   "pages": 14,
+   "uses": 14,
+   "tags": "div"
+  },
+  {
+   "old": "navigation-container",
+   "new": "nav_container",
+   "kind": "custom",
+   "group": "Navbar (Global / Nav)",
+   "note": "",
+   "pages": 14,
+   "uses": 14,
+   "tags": "div"
+  },
+  {
+   "old": "left-cell",
+   "new": "nav_brand",
+   "kind": "custom",
+   "group": "Navbar (Global / Nav)",
+   "note": "",
+   "pages": 14,
+   "uses": 14,
+   "tags": "a"
+  },
+  {
+   "old": "site-logo",
+   "new": "nav_logo",
+   "kind": "custom",
+   "group": "Navbar (Global / Nav)",
+   "note": "",
+   "pages": 14,
+   "uses": 14,
+   "tags": "img"
+  },
+  {
+   "old": "center-cell",
+   "new": "nav_menu",
+   "kind": "custom",
+   "group": "Navbar (Global / Nav)",
+   "note": "",
+   "pages": 14,
+   "uses": 14,
+   "tags": "nav"
+  },
+  {
+   "old": "navigation-link",
+   "new": "nav_link",
+   "kind": "custom",
+   "group": "Navbar (Global / Nav)",
+   "note": "",
+   "pages": 14,
+   "uses": 84,
+   "tags": "a"
+  },
+  {
+   "old": "right-cell",
+   "new": "nav_actions",
+   "kind": "custom",
+   "group": "Navbar (Global / Nav)",
+   "note": "",
+   "pages": 14,
+   "uses": 14,
+   "tags": "div"
+  },
+  {
+   "old": "link-block",
+   "new": "nav_action-link",
+   "kind": "custom",
+   "group": "Navbar (Global / Nav)",
+   "note": "",
+   "pages": 14,
+   "uses": 28,
+   "tags": "a"
+  },
+  {
+   "old": "espace-client",
+   "new": "is-client",
+   "kind": "combo",
+   "group": "Navbar (Global / Nav)",
+   "note": "Unstyled today; keep only if it carries a style after the conversion, else remove.",
+   "pages": 14,
+   "uses": 14,
+   "tags": "a"
+  },
+  {
+   "old": "recherche",
+   "new": "is-search",
+   "kind": "combo",
+   "group": "Navbar (Global / Nav)",
+   "note": "Same as is-client.",
+   "pages": 14,
+   "uses": 14,
+   "tags": "a"
+  },
+  {
+   "old": "text-block-4",
+   "new": "nav_action-label",
+   "kind": "custom",
+   "group": "Navbar (Global / Nav)",
+   "note": "Webflow default name (register #25).",
+   "pages": 14,
+   "uses": 14,
+   "tags": "div"
+  },
+  {
+   "old": "image-2",
+   "new": "nav_action-icon",
+   "kind": "custom",
+   "group": "Navbar (Global / Nav)",
+   "note": "Webflow default name (register #25).",
+   "pages": 14,
+   "uses": 14,
+   "tags": "img"
+  },
+  {
+   "old": "mobile-cell",
+   "new": "nav_mobile",
+   "kind": "custom",
+   "group": "Navbar (Global / Nav)",
+   "note": "",
+   "pages": 14,
+   "uses": 14,
+   "tags": "div"
+  },
+  {
+   "old": "menu-button",
+   "new": "nav_menu-button",
+   "kind": "custom",
+   "group": "Navbar (Global / Nav)",
+   "note": "",
+   "pages": 14,
+   "uses": 14,
+   "tags": "div"
+  },
+  {
+   "old": "language-dropdown",
+   "new": "nav_language",
+   "kind": "custom",
+   "group": "Navbar (Global / Nav)",
+   "note": "",
+   "pages": 14,
+   "uses": 14,
+   "tags": "div"
+  },
+  {
+   "old": "language-label",
+   "new": "nav_language-label",
+   "kind": "custom",
+   "group": "Navbar (Global / Nav)",
+   "note": "",
+   "pages": 14,
+   "uses": 14,
+   "tags": "div"
+  },
+  {
+   "old": "dropdown-list",
+   "new": "nav_language-list",
+   "kind": "custom",
+   "group": "Navbar (Global / Nav)",
+   "note": "",
+   "pages": 14,
+   "uses": 14,
+   "tags": "nav"
+  },
+  {
+   "old": "locales-wrapper",
+   "new": "nav_locales",
+   "kind": "custom",
+   "group": "Navbar (Global / Nav)",
+   "note": "",
+   "pages": 14,
+   "uses": 14,
+   "tags": "div"
+  },
+  {
+   "old": "locales-list",
+   "new": "nav_locales-list",
+   "kind": "custom",
+   "group": "Navbar (Global / Nav)",
+   "note": "",
+   "pages": 14,
+   "uses": 14,
+   "tags": "div"
+  },
+  {
+   "old": "link-2",
+   "new": "nav_locale-link",
+   "kind": "custom",
+   "group": "Navbar (Global / Nav)",
+   "note": "Webflow default name (register #25).",
+   "pages": 14,
+   "uses": 28,
+   "tags": "a"
+  },
+  {
+   "old": "footer-section",
+   "new": "footer_component",
+   "kind": "custom",
+   "group": "Footer (Global / Footer)",
+   "note": "Tag: footer.",
+   "pages": 14,
+   "uses": 14,
+   "tags": "section"
+  },
+  {
+   "old": "footer-container",
+   "new": "footer_container",
+   "kind": "custom",
+   "group": "Footer (Global / Footer)",
+   "note": "",
+   "pages": 14,
+   "uses": 14,
+   "tags": "div"
+  },
+  {
+   "old": "footer-columns-wrapper",
+   "new": "footer_columns-wrapper",
+   "kind": "custom",
+   "group": "Footer (Global / Footer)",
+   "note": "",
+   "pages": 14,
+   "uses": 14,
+   "tags": "div"
+  },
+  {
+   "old": "footer-columns",
+   "new": "footer_columns",
+   "kind": "custom",
+   "group": "Footer (Global / Footer)",
+   "note": "",
+   "pages": 14,
+   "uses": 14,
+   "tags": "div"
+  },
+  {
+   "old": "footer-column",
+   "new": "footer_column",
+   "kind": "custom",
+   "group": "Footer (Global / Footer)",
+   "note": "",
+   "pages": 14,
+   "uses": 56,
+   "tags": "div"
+  },
+  {
+   "old": "footer-column-large",
+   "new": "footer_column is-large",
+   "kind": "combo",
+   "group": "Footer (Global / Footer)",
+   "note": "",
+   "pages": 14,
+   "uses": 14,
+   "tags": "div"
+  },
+  {
+   "old": "footer-heading",
+   "new": "footer_heading",
+   "kind": "custom",
+   "group": "Footer (Global / Footer)",
+   "note": "h5 today; becomes a div (or h2) with heading-style-h3 values (24/32, 500). Register #34.",
+   "pages": 14,
+   "uses": 56,
+   "tags": "h5"
+  },
+  {
+   "old": "footer-list-wrapper",
+   "new": "footer_list-wrapper",
+   "kind": "custom",
+   "group": "Footer (Global / Footer)",
+   "note": "",
+   "pages": 14,
+   "uses": 28,
+   "tags": "div"
+  },
+  {
+   "old": "footer-list",
+   "new": "footer_list",
+   "kind": "custom",
+   "group": "Footer (Global / Footer)",
+   "note": "",
+   "pages": 14,
+   "uses": 56,
+   "tags": "div"
+  },
+  {
+   "old": "footer-item",
+   "new": "footer_item",
+   "kind": "custom",
+   "group": "Footer (Global / Footer)",
+   "note": "",
+   "pages": 14,
+   "uses": 196,
+   "tags": "div"
+  },
+  {
+   "old": "footer-item-link",
+   "new": "footer_link",
+   "kind": "custom",
+   "group": "Footer (Global / Footer)",
+   "note": "",
+   "pages": 14,
+   "uses": 196,
+   "tags": "a"
+  },
+  {
+   "old": "footer-text",
+   "new": "footer_text",
+   "kind": "custom",
+   "group": "Footer (Global / Footer)",
+   "note": "",
+   "pages": 14,
+   "uses": 14,
+   "tags": "div"
+  },
+  {
+   "old": "footer-subdued-wrapper",
+   "new": "footer_bottom",
+   "kind": "custom",
+   "group": "Footer (Global / Footer)",
+   "note": "",
+   "pages": 14,
+   "uses": 14,
+   "tags": "div"
+  },
+  {
+   "old": "footer-subdued-wrapper-big-screen",
+   "new": "footer_bottom is-desktop",
+   "kind": "combo",
+   "group": "Footer (Global / Footer)",
+   "note": "",
+   "pages": 14,
+   "uses": 14,
+   "tags": "div"
+  },
+  {
+   "old": "footer-subdued-link-wrapper",
+   "new": "footer_legal-links",
+   "kind": "custom",
+   "group": "Footer (Global / Footer)",
+   "note": "",
+   "pages": 14,
+   "uses": 28,
+   "tags": "div"
+  },
+  {
+   "old": "copyright",
+   "new": "footer_copyright",
+   "kind": "custom",
+   "group": "Footer (Global / Footer)",
+   "note": "",
+   "pages": 14,
+   "uses": 84,
+   "tags": "div/a"
+  },
+  {
+   "old": "social-links-wrapper",
+   "new": "footer_social-list",
+   "kind": "custom",
+   "group": "Footer (Global / Footer)",
+   "note": "",
+   "pages": 14,
+   "uses": 14,
+   "tags": "div"
+  },
+  {
+   "old": "social-link",
+   "new": "footer_social-link",
+   "kind": "custom",
+   "group": "Footer (Global / Footer)",
+   "note": "",
+   "pages": 14,
+   "uses": 56,
+   "tags": "a"
+  },
+  {
+   "old": "facebook",
+   "new": "(remove)",
+   "kind": "remove",
+   "group": "Footer (Global / Footer)",
+   "note": "Unstyled per-network names on the icons; the icon gets footer_social-icon.",
+   "pages": 14,
+   "uses": 14,
+   "tags": "img"
+  },
+  {
+   "old": "linkedin",
+   "new": "(remove)",
+   "kind": "remove",
+   "group": "Footer (Global / Footer)",
+   "note": "As facebook.",
+   "pages": 14,
+   "uses": 14,
+   "tags": "img"
+  },
+  {
+   "old": "youtube",
+   "new": "(remove)",
+   "kind": "remove",
+   "group": "Footer (Global / Footer)",
+   "note": "As facebook.",
+   "pages": 14,
+   "uses": 14,
+   "tags": "img"
+  },
+  {
+   "old": "instagram",
+   "new": "(remove)",
+   "kind": "remove",
+   "group": "Footer (Global / Footer)",
+   "note": "As facebook.",
+   "pages": 14,
+   "uses": 14,
+   "tags": "img"
+  },
+  {
+   "old": "location-list-wrapper",
+   "new": "footer_locations",
+   "kind": "custom",
+   "group": "Footer (Global / Footer)",
+   "note": "",
+   "pages": 14,
+   "uses": 14,
+   "tags": "div"
+  },
+  {
+   "old": "location",
+   "new": "footer_location",
+   "kind": "custom",
+   "group": "Footer (Global / Footer)",
+   "note": "",
+   "pages": 14,
+   "uses": 42,
+   "tags": "div"
+  },
+  {
+   "old": "location-link",
+   "new": "footer_location-link",
+   "kind": "custom",
+   "group": "Footer (Global / Footer)",
+   "note": "",
+   "pages": 14,
+   "uses": 42,
+   "tags": "a"
+  },
+  {
+   "old": "location-text",
+   "new": "footer_location-text",
+   "kind": "custom",
+   "group": "Footer (Global / Footer)",
+   "note": "",
+   "pages": 14,
+   "uses": 42,
+   "tags": "div"
+  },
+  {
+   "old": "link-with-icon",
+   "new": "footer_contact-link",
+   "kind": "custom",
+   "group": "Footer (Global / Footer)",
+   "note": "",
+   "pages": 14,
+   "uses": 42,
+   "tags": "a"
+  },
+  {
+   "old": "link-icon",
+   "new": "footer_contact-icon",
+   "kind": "custom",
+   "group": "Footer (Global / Footer)",
+   "note": "",
+   "pages": 14,
+   "uses": 84,
+   "tags": "img"
+  },
+  {
+   "old": "link-text",
+   "new": "footer_contact-text",
+   "kind": "custom",
+   "group": "Footer (Global / Footer)",
+   "note": "",
+   "pages": 14,
+   "uses": 84,
+   "tags": "div"
+  },
+  {
+   "old": "darker",
+   "new": "is-dark",
+   "kind": "combo",
+   "group": "Footer (Global / Footer)",
+   "note": "On footer_contact-text. Unstyled base; check the combo carries the colour.",
+   "pages": 14,
+   "uses": 42,
+   "tags": "div"
+  },
+  {
+   "old": "flex-block",
+   "new": "footer_contact-row",
+   "kind": "custom",
+   "group": "Footer (Global / Footer)",
+   "note": "Webflow default name (register #25).",
+   "pages": 14,
+   "uses": 42,
+   "tags": "div"
+  },
+  {
+   "old": "page-layout-cell",
+   "new": "page-layout_component",
+   "kind": "custom",
+   "group": "Page header and listing layout",
+   "note": "Same shell on Expertises, Affiliations, À propos (register #21).",
+   "pages": 3,
+   "uses": 3,
+   "tags": "div"
+  },
+  {
+   "old": "team-page-layout",
+   "new": "page-layout_component",
+   "kind": "custom",
+   "group": "Page header and listing layout",
+   "note": "Équipe copy of the same shell.",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "page-columns",
+   "new": "page-layout_component is-contents",
+   "kind": "combo",
+   "group": "Page header and listing layout",
+   "note": "Contenus: header with filters beside the list.",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "page-header-cell",
+   "new": "page-layout_header",
+   "kind": "custom",
+   "group": "Page header and listing layout",
+   "note": "",
+   "pages": 4,
+   "uses": 4,
+   "tags": "div"
+  },
+  {
+   "old": "team-page-content-cell",
+   "new": "page-layout_header",
+   "kind": "custom",
+   "group": "Page header and listing layout",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "page-grid-cell",
+   "new": "page-layout_content",
+   "kind": "custom",
+   "group": "Page header and listing layout",
+   "note": "",
+   "pages": 3,
+   "uses": 3,
+   "tags": "div"
+  },
+  {
+   "old": "team-page-grid-cell",
+   "new": "page-layout_content",
+   "kind": "custom",
+   "group": "Page header and listing layout",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "page-content-cell",
+   "new": "page-layout_content",
+   "kind": "custom",
+   "group": "Page header and listing layout",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "page-title",
+   "new": "page-header_title",
+   "kind": "custom",
+   "group": "Page header and listing layout",
+   "note": "h1 + heading-style-h1 values. Seven title classes become one (register #22).",
+   "pages": 6,
+   "uses": 6,
+   "tags": "h1"
+  },
+  {
+   "old": "team-page-title",
+   "new": "page-header_title",
+   "kind": "custom",
+   "group": "Page header and listing layout",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "h1"
+  },
+  {
+   "old": "contact-page-title",
+   "new": "page-header_title",
+   "kind": "custom",
+   "group": "Page header and listing layout",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "h1"
+  },
+  {
+   "old": "page-subtitle",
+   "new": "page-header_subtitle",
+   "kind": "custom",
+   "group": "Page header and listing layout",
+   "note": "Typography / Subtitle variables (steps up at 1440, down below 480).",
+   "pages": 6,
+   "uses": 6,
+   "tags": "div"
+  },
+  {
+   "old": "team-page-subtitle",
+   "new": "page-header_subtitle",
+   "kind": "custom",
+   "group": "Page header and listing layout",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "contact-page-subtitle",
+   "new": "page-header_subtitle",
+   "kind": "custom",
+   "group": "Page header and listing layout",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "page-description",
+   "new": "page-header_description",
+   "kind": "custom",
+   "group": "Page header and listing layout",
+   "note": "",
+   "pages": 3,
+   "uses": 8,
+   "tags": "div"
+  },
+  {
+   "old": "highlighted",
+   "new": "text-style-highlight",
+   "kind": "utility",
+   "group": "Page header and listing layout",
+   "note": "Added utility (deviation): the title swash. Global embed draws it, Figma colours and order.",
+   "pages": 7,
+   "uses": 21,
+   "tags": "span"
+  },
+  {
+   "old": "centered",
+   "new": "is-centered",
+   "kind": "combo",
+   "group": "Page header and listing layout",
+   "note": "On the home hero title, subtitle and tag list.",
+   "pages": 2,
+   "uses": 5,
+   "tags": "h1/div"
+  },
+  {
+   "old": "midsection-title-wrapper",
+   "new": "section-header_component",
+   "kind": "custom",
+   "group": "Section header",
+   "note": "",
+   "pages": 5,
+   "uses": 6,
+   "tags": "div"
+  },
+  {
+   "old": "midsection-title",
+   "new": "section-header_title",
+   "kind": "custom",
+   "group": "Section header",
+   "note": "h1 today on 5 page types; becomes h2 with heading-style-h1 values (register #34).",
+   "pages": 5,
+   "uses": 7,
+   "tags": "h1"
+  },
+  {
+   "old": "midsection-subtitle",
+   "new": "section-header_subtitle",
+   "kind": "custom",
+   "group": "Section header",
+   "note": "",
+   "pages": 5,
+   "uses": 6,
+   "tags": "div"
+  },
+  {
+   "old": "dynamic-title",
+   "new": "related_heading",
+   "kind": "custom",
+   "group": "Section header",
+   "note": "Expertise template: « Découvrez notre contenu en [expertise] ». Replaced by the related-content headings.",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "lowercase",
+   "new": "text-style-lowercase",
+   "kind": "utility",
+   "group": "Section header",
+   "note": "Added utility (deviation), the counterpart of V3 text-style-allcaps.",
+   "pages": 1,
+   "uses": 1,
+   "tags": "h1"
+  },
+  {
+   "old": "collection-list-wrapper",
+   "new": "card-grid_list-wrapper",
+   "kind": "custom",
+   "group": "Dashed card grid (border model)",
+   "note": "",
+   "pages": 6,
+   "uses": 6,
+   "tags": "div"
+  },
+  {
+   "old": "affiliations-list-wrapper",
+   "new": "card-grid_list-wrapper",
+   "kind": "custom",
+   "group": "Dashed card grid (border model)",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "affiliation-list-wrapper",
+   "new": "card-grid_list-wrapper",
+   "kind": "custom",
+   "group": "Dashed card grid (border model)",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "teammate-list-wrapper",
+   "new": "card-grid_list-wrapper",
+   "kind": "custom",
+   "group": "Dashed card grid (border model)",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "collection-list",
+   "new": "card-grid_list",
+   "kind": "custom",
+   "group": "Dashed card grid (border model)",
+   "note": "Carries border-top and border-left. 3 / 2 / 2 / 1 columns.",
+   "pages": 6,
+   "uses": 6,
+   "tags": "div"
+  },
+  {
+   "old": "affiliation-collection-list",
+   "new": "card-grid_list",
+   "kind": "custom",
+   "group": "Dashed card grid (border model)",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "team-collection-list",
+   "new": "card-grid_list is-team",
+   "kind": "combo",
+   "group": "Dashed card grid (border model)",
+   "note": "4 columns at 1920 and up.",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "teammate-list",
+   "new": "card-grid_list is-home-team",
+   "kind": "combo",
+   "group": "Dashed card grid (border model)",
+   "note": "Pyramid; layout CSS keyed on data-yx-home-team.",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "affiliation-list",
+   "new": "card-grid_list is-home-affiliations",
+   "kind": "combo",
+   "group": "Dashed card grid (border model)",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "collection-item",
+   "new": "card-grid_item",
+   "kind": "custom",
+   "group": "Dashed card grid (border model)",
+   "note": "Carries border-right and border-bottom.",
+   "pages": 6,
+   "uses": 104,
+   "tags": "div"
+  },
+  {
+   "old": "affiliation-collection-item",
+   "new": "card-grid_item",
+   "kind": "custom",
+   "group": "Dashed card grid (border model)",
+   "note": "",
+   "pages": 1,
+   "uses": 5,
+   "tags": "div"
+  },
+  {
+   "old": "team-collection-item",
+   "new": "card-grid_item",
+   "kind": "custom",
+   "group": "Dashed card grid (border model)",
+   "note": "",
+   "pages": 1,
+   "uses": 21,
+   "tags": "div"
+  },
+  {
+   "old": "teammate-item",
+   "new": "card-grid_item",
+   "kind": "custom",
+   "group": "Dashed card grid (border model)",
+   "note": "",
+   "pages": 1,
+   "uses": 21,
+   "tags": "div"
+  },
+  {
+   "old": "affiliation-item",
+   "new": "card-grid_item",
+   "kind": "custom",
+   "group": "Dashed card grid (border model)",
+   "note": "",
+   "pages": 1,
+   "uses": 4,
+   "tags": "div"
+  },
+  {
+   "old": "static-block",
+   "new": "card-grid_cta",
+   "kind": "custom",
+   "group": "Dashed card grid (border model)",
+   "note": "Home affiliations and « À la une » CTA card. The order-flipped duplicate combo goes (register #33).",
+   "pages": 4,
+   "uses": 5,
+   "tags": "div"
+  },
+  {
+   "old": "teammate-static-block",
+   "new": "card-grid_cta",
+   "kind": "custom",
+   "group": "Dashed card grid (border model)",
+   "note": "Home team CTA, moved by home-team.ts.",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "borders",
+   "new": "(remove)",
+   "kind": "remove",
+   "group": "Dashed card grid (border model)",
+   "note": "Per-card border combo, replaced by the border model.",
+   "pages": 4,
+   "uses": 97,
+   "tags": "div"
+  },
+  {
+   "old": "item-link",
+   "new": "link-card_component",
+   "kind": "split",
+   "group": "Cards",
+   "note": "Two roles: the expertise / À propos card link, and a div inside the Contenu previous/next cards (that one becomes prevnext_card).",
+   "pages": 6,
+   "uses": 112,
+   "tags": "a/div"
+  },
+  {
+   "old": "item-image",
+   "new": "link-card_image",
+   "kind": "custom",
+   "group": "Cards",
+   "note": "",
+   "pages": 5,
+   "uses": 30,
+   "tags": "img"
+  },
+  {
+   "old": "item-name",
+   "new": "link-card_title",
+   "kind": "split",
+   "group": "Cards",
+   "note": "Also set on an img in the Affiliation and À propos hidden lists; that img becomes link-card_image.",
+   "pages": 5,
+   "uses": 48,
+   "tags": "h3/img"
+  },
+  {
+   "old": "item-name-prefix",
+   "new": "link-card_title-prefix",
+   "kind": "custom",
+   "group": "Cards",
+   "note": "« Précédent » / « Suivant » prefix in previous/next cards.",
+   "pages": 3,
+   "uses": 24,
+   "tags": "h3"
+  },
+  {
+   "old": "item-name-wrapper",
+   "new": "link-card_title-wrapper",
+   "kind": "custom",
+   "group": "Cards",
+   "note": "",
+   "pages": 3,
+   "uses": 24,
+   "tags": "div"
+  },
+  {
+   "old": "item-description",
+   "new": "link-card_description",
+   "kind": "custom",
+   "group": "Cards",
+   "note": "",
+   "pages": 2,
+   "uses": 20,
+   "tags": "div"
+  },
+  {
+   "old": "affiliation-item-link",
+   "new": "logo-card_component",
+   "kind": "custom",
+   "group": "Cards",
+   "note": "",
+   "pages": 1,
+   "uses": 5,
+   "tags": "a"
+  },
+  {
+   "old": "affiliation-link",
+   "new": "logo-card_component",
+   "kind": "custom",
+   "group": "Cards",
+   "note": "",
+   "pages": 1,
+   "uses": 4,
+   "tags": "a"
+  },
+  {
+   "old": "affiliation-item-image",
+   "new": "logo-card_image",
+   "kind": "custom",
+   "group": "Cards",
+   "note": "",
+   "pages": 1,
+   "uses": 5,
+   "tags": "img"
+  },
+  {
+   "old": "affiliation-image",
+   "new": "logo-card_image",
+   "kind": "custom",
+   "group": "Cards",
+   "note": "",
+   "pages": 1,
+   "uses": 4,
+   "tags": "img"
+  },
+  {
+   "old": "team-item-link",
+   "new": "person-card_component",
+   "kind": "custom",
+   "group": "Cards",
+   "note": "Card / Person (Figma Card, size md).",
+   "pages": 1,
+   "uses": 21,
+   "tags": "a"
+  },
+  {
+   "old": "teammate-link-wrapper",
+   "new": "person-card_component is-small",
+   "kind": "combo",
+   "group": "Cards",
+   "note": "Home: Figma Card size sm.",
+   "pages": 1,
+   "uses": 21,
+   "tags": "a"
+  },
+  {
+   "old": "team-item-image-wrapper",
+   "new": "person-card_image-wrapper",
+   "kind": "custom",
+   "group": "Cards",
+   "note": "",
+   "pages": 1,
+   "uses": 21,
+   "tags": "div"
+  },
+  {
+   "old": "teammate-image-wrapper",
+   "new": "person-card_image-wrapper",
+   "kind": "custom",
+   "group": "Cards",
+   "note": "",
+   "pages": 1,
+   "uses": 21,
+   "tags": "div"
+  },
+  {
+   "old": "team-item-image",
+   "new": "person-card_image",
+   "kind": "custom",
+   "group": "Cards",
+   "note": "",
+   "pages": 1,
+   "uses": 21,
+   "tags": "img"
+  },
+  {
+   "old": "teammate-image",
+   "new": "person-card_image",
+   "kind": "custom",
+   "group": "Cards",
+   "note": "",
+   "pages": 1,
+   "uses": 21,
+   "tags": "img"
+  },
+  {
+   "old": "team-item-image-background",
+   "new": "person-card_background",
+   "kind": "custom",
+   "group": "Cards",
+   "note": "Tone from data-yx-tone or nth-child, Theme / Accent.",
+   "pages": 1,
+   "uses": 21,
+   "tags": "div"
+  },
+  {
+   "old": "teammate-image-background",
+   "new": "person-card_background",
+   "kind": "custom",
+   "group": "Cards",
+   "note": "",
+   "pages": 1,
+   "uses": 21,
+   "tags": "div"
+  },
+  {
+   "old": "team-content-wrapper",
+   "new": "person-card_content",
+   "kind": "split",
+   "group": "Cards",
+   "note": "Also used as the Équipe Collection List Wrapper; that one becomes card-grid_list-wrapper.",
+   "pages": 1,
+   "uses": 22,
+   "tags": "div"
+  },
+  {
+   "old": "teammate-content-wrapper",
+   "new": "person-card_content",
+   "kind": "custom",
+   "group": "Cards",
+   "note": "",
+   "pages": 1,
+   "uses": 21,
+   "tags": "div"
+  },
+  {
+   "old": "team-item-name",
+   "new": "person-card_name",
+   "kind": "custom",
+   "group": "Cards",
+   "note": "",
+   "pages": 1,
+   "uses": 21,
+   "tags": "h3"
+  },
+  {
+   "old": "teammate-name",
+   "new": "person-card_name",
+   "kind": "custom",
+   "group": "Cards",
+   "note": "",
+   "pages": 1,
+   "uses": 21,
+   "tags": "div"
+  },
+  {
+   "old": "team-item-description",
+   "new": "person-card_title",
+   "kind": "custom",
+   "group": "Cards",
+   "note": "",
+   "pages": 1,
+   "uses": 21,
+   "tags": "div"
+  },
+  {
+   "old": "teammate-title",
+   "new": "person-card_title",
+   "kind": "custom",
+   "group": "Cards",
+   "note": "",
+   "pages": 1,
+   "uses": 21,
+   "tags": "div"
+  },
+  {
+   "old": "cards",
+   "new": "info-card_grid",
+   "kind": "custom",
+   "group": "Cards",
+   "note": "Expertises page, lower section.",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "card",
+   "new": "info-card_component",
+   "kind": "custom",
+   "group": "Cards",
+   "note": "",
+   "pages": 1,
+   "uses": 4,
+   "tags": "div"
+  },
+  {
+   "old": "card-title",
+   "new": "info-card_title",
+   "kind": "custom",
+   "group": "Cards",
+   "note": "",
+   "pages": 1,
+   "uses": 4,
+   "tags": "strong"
+  },
+  {
+   "old": "card-content",
+   "new": "info-card_text",
+   "kind": "custom",
+   "group": "Cards",
+   "note": "",
+   "pages": 1,
+   "uses": 4,
+   "tags": "div"
+  },
+  {
+   "old": "recent-posts",
+   "new": "post-rows_component",
+   "kind": "custom",
+   "group": "Posts and tags",
+   "note": "« À la une » / related rows.",
+   "pages": 4,
+   "uses": 4,
+   "tags": "div"
+  },
+  {
+   "old": "recent-posts-divider",
+   "new": "post-rows_group",
+   "kind": "custom",
+   "group": "Posts and tags",
+   "note": "",
+   "pages": 4,
+   "uses": 4,
+   "tags": "div"
+  },
+  {
+   "old": "right",
+   "new": "is-secondary",
+   "kind": "combo",
+   "group": "Posts and tags",
+   "note": "On the capsules column of post-rows.",
+   "pages": 2,
+   "uses": 2,
+   "tags": "div"
+  },
+  {
+   "old": "post-collection-list-wrapper",
+   "new": "post-list_list-wrapper",
+   "kind": "custom",
+   "group": "Posts and tags",
+   "note": "",
+   "pages": 5,
+   "uses": 9,
+   "tags": "div"
+  },
+  {
+   "old": "post-collection-list",
+   "new": "post-list_list",
+   "kind": "custom",
+   "group": "Posts and tags",
+   "note": "",
+   "pages": 5,
+   "uses": 9,
+   "tags": "div"
+  },
+  {
+   "old": "post-collection-item",
+   "new": "post-card_component",
+   "kind": "custom",
+   "group": "Posts and tags",
+   "note": "Card / Post (Figma Blog Post). Stays a class family: it holds nested Collection Lists, which a Component can't.",
+   "pages": 5,
+   "uses": 31,
+   "tags": "div"
+  },
+  {
+   "old": "article",
+   "new": "(remove)",
+   "kind": "remove",
+   "group": "Posts and tags",
+   "note": "Unstyled type combo; the :last-child patches it fed are replaced by the border model.",
+   "pages": 4,
+   "uses": 12,
+   "tags": "div"
+  },
+  {
+   "old": "articles",
+   "new": "(remove)",
+   "kind": "remove",
+   "group": "Posts and tags",
+   "note": "As article.",
+   "pages": 4,
+   "uses": 4,
+   "tags": "div"
+  },
+  {
+   "old": "capsule",
+   "new": "(remove)",
+   "kind": "remove",
+   "group": "Posts and tags",
+   "note": "As article.",
+   "pages": 2,
+   "uses": 6,
+   "tags": "div"
+  },
+  {
+   "old": "capsules",
+   "new": "(remove)",
+   "kind": "remove",
+   "group": "Posts and tags",
+   "note": "As article.",
+   "pages": 2,
+   "uses": 2,
+   "tags": "div"
+  },
+  {
+   "old": "podcast",
+   "new": "(remove)",
+   "kind": "remove",
+   "group": "Posts and tags",
+   "note": "As article.",
+   "pages": 2,
+   "uses": 4,
+   "tags": "div"
+  },
+  {
+   "old": "podcasts",
+   "new": "(remove)",
+   "kind": "remove",
+   "group": "Posts and tags",
+   "note": "As article.",
+   "pages": 2,
+   "uses": 2,
+   "tags": "div"
+  },
+  {
+   "old": "post-image",
+   "new": "post-card_image",
+   "kind": "custom",
+   "group": "Posts and tags",
+   "note": "",
+   "pages": 4,
+   "uses": 12,
+   "tags": "img"
+  },
+  {
+   "old": "post-meta-wrapper",
+   "new": "post-card_meta",
+   "kind": "custom",
+   "group": "Posts and tags",
+   "note": "",
+   "pages": 6,
+   "uses": 96,
+   "tags": "div"
+  },
+  {
+   "old": "post-title",
+   "new": "post-card_title",
+   "kind": "custom",
+   "group": "Posts and tags",
+   "note": "",
+   "pages": 5,
+   "uses": 27,
+   "tags": "a"
+  },
+  {
+   "old": "rte-inter",
+   "new": "post-card_excerpt",
+   "kind": "custom",
+   "group": "Posts and tags",
+   "note": "",
+   "pages": 4,
+   "uses": 12,
+   "tags": "div"
+  },
+  {
+   "old": "post-link-wrapper",
+   "new": "post-card_link",
+   "kind": "custom",
+   "group": "Posts and tags",
+   "note": "« Lire la suite » link.",
+   "pages": 6,
+   "uses": 100,
+   "tags": "a"
+  },
+  {
+   "old": "post-type",
+   "new": "post-card_type",
+   "kind": "custom",
+   "group": "Posts and tags",
+   "note": "Finsweet filter field on Contenus; hidden.",
+   "pages": 1,
+   "uses": 5,
+   "tags": "div"
+  },
+  {
+   "old": "contact-link-label",
+   "new": "link-arrow_label",
+   "kind": "custom",
+   "group": "Posts and tags",
+   "note": "Shared label inside post, contact and previous/next links (7 pages).",
+   "pages": 7,
+   "uses": 103,
+   "tags": "div"
+  },
+  {
+   "old": "contact-link-icon",
+   "new": "link-arrow_icon",
+   "kind": "custom",
+   "group": "Posts and tags",
+   "note": "",
+   "pages": 7,
+   "uses": 103,
+   "tags": "img"
+  },
+  {
+   "old": "post-author-list-wrapper",
+   "new": "author-list_list-wrapper",
+   "kind": "custom",
+   "group": "Posts and tags",
+   "note": "",
+   "pages": 6,
+   "uses": 80,
+   "tags": "div"
+  },
+  {
+   "old": "post-author-list",
+   "new": "author-list_list",
+   "kind": "custom",
+   "group": "Posts and tags",
+   "note": "",
+   "pages": 6,
+   "uses": 80,
+   "tags": "div"
+  },
+  {
+   "old": "post-author-item",
+   "new": "author-list_item",
+   "kind": "custom",
+   "group": "Posts and tags",
+   "note": "",
+   "pages": 6,
+   "uses": 85,
+   "tags": "div"
+  },
+  {
+   "old": "post-author-link",
+   "new": "author-list_link",
+   "kind": "custom",
+   "group": "Posts and tags",
+   "note": "",
+   "pages": 6,
+   "uses": 85,
+   "tags": "a"
+  },
+  {
+   "old": "post-author-image",
+   "new": "author-list_avatar",
+   "kind": "custom",
+   "group": "Posts and tags",
+   "note": "Figma Avatar, Circle.",
+   "pages": 6,
+   "uses": 86,
+   "tags": "img"
+  },
+  {
+   "old": "post-author-name",
+   "new": "author-list_name",
+   "kind": "custom",
+   "group": "Posts and tags",
+   "note": "",
+   "pages": 6,
+   "uses": 85,
+   "tags": "div"
+  },
+  {
+   "old": "expertise-list-wrapper",
+   "new": "tag-list_list-wrapper",
+   "kind": "custom",
+   "group": "Posts and tags",
+   "note": "Figma Tag. 95 instances on 6 pages.",
+   "pages": 6,
+   "uses": 95,
+   "tags": "div"
+  },
+  {
+   "old": "expertise-list",
+   "new": "tag-list_list",
+   "kind": "custom",
+   "group": "Posts and tags",
+   "note": "",
+   "pages": 6,
+   "uses": 95,
+   "tags": "div"
+  },
+  {
+   "old": "expertise-item",
+   "new": "tag-list_item",
+   "kind": "custom",
+   "group": "Posts and tags",
+   "note": "",
+   "pages": 6,
+   "uses": 108,
+   "tags": "div"
+  },
+  {
+   "old": "expertise-link",
+   "new": "tag-list_link",
+   "kind": "custom",
+   "group": "Posts and tags",
+   "note": "",
+   "pages": 6,
+   "uses": 108,
+   "tags": "a"
+  },
+  {
+   "old": "expertise-page-wrapper",
+   "new": "detail_component",
+   "kind": "custom",
+   "group": "Detail templates (Contenu, Expertise, Affiliation, À propos)",
+   "note": "Four templates were cloned from the Expertise one (register #21).",
+   "pages": 4,
+   "uses": 4,
+   "tags": "div"
+  },
+  {
+   "old": "expertise-header-wrapper",
+   "new": "detail_header",
+   "kind": "custom",
+   "group": "Detail templates (Contenu, Expertise, Affiliation, À propos)",
+   "note": "",
+   "pages": 3,
+   "uses": 3,
+   "tags": "div"
+  },
+  {
+   "old": "expertise-header-grid",
+   "new": "detail_header-grid",
+   "kind": "custom",
+   "group": "Detail templates (Contenu, Expertise, Affiliation, À propos)",
+   "note": "",
+   "pages": 4,
+   "uses": 4,
+   "tags": "div"
+  },
+  {
+   "old": "expertise-header-cell",
+   "new": "detail_header-content",
+   "kind": "custom",
+   "group": "Detail templates (Contenu, Expertise, Affiliation, À propos)",
+   "note": "",
+   "pages": 3,
+   "uses": 3,
+   "tags": "div"
+  },
+  {
+   "old": "v-wrapper-24",
+   "new": "detail_header-content gap-small",
+   "kind": "utility",
+   "group": "Detail templates (Contenu, Expertise, Affiliation, À propos)",
+   "note": "Custom class + V3 gap utility (24 px).",
+   "pages": 2,
+   "uses": 2,
+   "tags": "div"
+  },
+  {
+   "old": "v-wrapper-8",
+   "new": "detail_title-wrapper gap-xtiny",
+   "kind": "utility",
+   "group": "Detail templates (Contenu, Expertise, Affiliation, À propos)",
+   "note": "Custom class + V3 gap utility (8 px).",
+   "pages": 2,
+   "uses": 2,
+   "tags": "div"
+  },
+  {
+   "old": "expertise-image",
+   "new": "detail_icon",
+   "kind": "custom",
+   "group": "Detail templates (Contenu, Expertise, Affiliation, À propos)",
+   "note": "",
+   "pages": 3,
+   "uses": 3,
+   "tags": "img"
+  },
+  {
+   "old": "content-image",
+   "new": "detail_image",
+   "kind": "custom",
+   "group": "Detail templates (Contenu, Expertise, Affiliation, À propos)",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "img"
+  },
+  {
+   "old": "expertise-name",
+   "new": "detail_title",
+   "kind": "custom",
+   "group": "Detail templates (Contenu, Expertise, Affiliation, À propos)",
+   "note": "h1.",
+   "pages": 1,
+   "uses": 1,
+   "tags": "h1"
+  },
+  {
+   "old": "expertise-name-2",
+   "new": "detail_title",
+   "kind": "custom",
+   "group": "Detail templates (Contenu, Expertise, Affiliation, À propos)",
+   "note": "Duplicate of expertise-name (register #33).",
+   "pages": 1,
+   "uses": 1,
+   "tags": "h1"
+  },
+  {
+   "old": "content-page-title",
+   "new": "detail_title is-large",
+   "kind": "combo",
+   "group": "Detail templates (Contenu, Expertise, Affiliation, À propos)",
+   "note": "Contenu titles use the page-title size.",
+   "pages": 1,
+   "uses": 1,
+   "tags": "h1"
+  },
+  {
+   "old": "expertise-page-title",
+   "new": "detail_subtitle",
+   "kind": "custom",
+   "group": "Detail templates (Contenu, Expertise, Affiliation, À propos)",
+   "note": "Rich text h2 with code swash (60 px, 36 px below 768).",
+   "pages": 3,
+   "uses": 3,
+   "tags": "div"
+  },
+  {
+   "old": "content-header-wrapper",
+   "new": "detail_meta",
+   "kind": "custom",
+   "group": "Detail templates (Contenu, Expertise, Affiliation, À propos)",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "comma-wrapper",
+   "new": "detail_byline",
+   "kind": "custom",
+   "group": "Detail templates (Contenu, Expertise, Affiliation, À propos)",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "comma",
+   "new": "detail_byline-separator",
+   "kind": "custom",
+   "group": "Detail templates (Contenu, Expertise, Affiliation, À propos)",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "content-meta-wrapper",
+   "new": "detail_byline-authors",
+   "kind": "custom",
+   "group": "Detail templates (Contenu, Expertise, Affiliation, À propos)",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "author-list",
+   "new": "detail_byline-list",
+   "kind": "custom",
+   "group": "Detail templates (Contenu, Expertise, Affiliation, À propos)",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "author-item",
+   "new": "detail_byline-item",
+   "kind": "custom",
+   "group": "Detail templates (Contenu, Expertise, Affiliation, À propos)",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "content-author-image",
+   "new": "detail_byline-avatar",
+   "kind": "custom",
+   "group": "Detail templates (Contenu, Expertise, Affiliation, À propos)",
+   "note": "",
+   "pages": 1,
+   "uses": 21,
+   "tags": "img"
+  },
+  {
+   "old": "text-block",
+   "new": "detail_byline-text",
+   "kind": "custom",
+   "group": "Detail templates (Contenu, Expertise, Affiliation, À propos)",
+   "note": "Webflow default name.",
+   "pages": 1,
+   "uses": 3,
+   "tags": "div"
+  },
+  {
+   "old": "expertise-content-cell",
+   "new": "detail_body",
+   "kind": "custom",
+   "group": "Detail templates (Contenu, Expertise, Affiliation, À propos)",
+   "note": "",
+   "pages": 3,
+   "uses": 3,
+   "tags": "div"
+  },
+  {
+   "old": "content-cell",
+   "new": "detail_body",
+   "kind": "custom",
+   "group": "Detail templates (Contenu, Expertise, Affiliation, À propos)",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "expertise-content-grid",
+   "new": "detail_body-grid",
+   "kind": "custom",
+   "group": "Detail templates (Contenu, Expertise, Affiliation, À propos)",
+   "note": "",
+   "pages": 3,
+   "uses": 3,
+   "tags": "div"
+  },
+  {
+   "old": "content-grid",
+   "new": "detail_body-grid",
+   "kind": "custom",
+   "group": "Detail templates (Contenu, Expertise, Affiliation, À propos)",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "expertise-content",
+   "new": "detail_rich-text text-rich-text",
+   "kind": "utility",
+   "group": "Detail templates (Contenu, Expertise, Affiliation, À propos)",
+   "note": "Custom + V3 text-rich-text. One rich-text style for all four templates.",
+   "pages": 3,
+   "uses": 3,
+   "tags": "div"
+  },
+  {
+   "old": "content-rich-text",
+   "new": "detail_rich-text text-rich-text",
+   "kind": "utility",
+   "group": "Detail templates (Contenu, Expertise, Affiliation, À propos)",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "position-1",
+   "new": "(remove)",
+   "kind": "remove",
+   "group": "Detail templates (Contenu, Expertise, Affiliation, À propos)",
+   "note": "Unstyled combo on the Affiliation rich text.",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "expertise-interlegal-block",
+   "new": "detail_callout",
+   "kind": "custom",
+   "group": "Detail templates (Contenu, Expertise, Affiliation, À propos)",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "image-collection-wrapper",
+   "new": "detail_gallery",
+   "kind": "custom",
+   "group": "Detail templates (Contenu, Expertise, Affiliation, À propos)",
+   "note": "À propos template.",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "image-list",
+   "new": "detail_gallery-list",
+   "kind": "custom",
+   "group": "Detail templates (Contenu, Expertise, Affiliation, À propos)",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "image-item",
+   "new": "detail_gallery-item",
+   "kind": "custom",
+   "group": "Detail templates (Contenu, Expertise, Affiliation, À propos)",
+   "note": "",
+   "pages": 1,
+   "uses": 5,
+   "tags": "div"
+  },
+  {
+   "old": "image",
+   "new": "detail_gallery-image",
+   "kind": "custom",
+   "group": "Detail templates (Contenu, Expertise, Affiliation, À propos)",
+   "note": "Webflow default name.",
+   "pages": 1,
+   "uses": 5,
+   "tags": "img"
+  },
+  {
+   "old": "hidden-collection",
+   "new": "prevnext_source",
+   "kind": "custom",
+   "group": "Previous / next (Finsweet)",
+   "note": "Hidden full list Finsweet copies from (register #12, keep).",
+   "pages": 4,
+   "uses": 4,
+   "tags": "div"
+  },
+  {
+   "old": "navigation-block",
+   "new": "prevnext_slot",
+   "kind": "custom",
+   "group": "Previous / next (Finsweet)",
+   "note": "fs-list-element previous-item / next-item targets. Shown below 992 px as the compact bar instead of display none.",
+   "pages": 4,
+   "uses": 8,
+   "tags": "div"
+  },
+  {
+   "old": "previous-empty",
+   "new": "prevnext_fallback",
+   "kind": "custom",
+   "group": "Previous / next (Finsweet)",
+   "note": "One-item CMS list inside, relative links (register #13).",
+   "pages": 4,
+   "uses": 4,
+   "tags": "div"
+  },
+  {
+   "old": "next-empty",
+   "new": "prevnext_fallback",
+   "kind": "custom",
+   "group": "Previous / next (Finsweet)",
+   "note": "",
+   "pages": 4,
+   "uses": 4,
+   "tags": "div"
+  },
+  {
+   "old": "navigation-30-36",
+   "new": "prevnext_title",
+   "kind": "custom",
+   "group": "Previous / next (Finsweet)",
+   "note": "Title inside the previous/next cards. Not a leftover (register #24).",
+   "pages": 1,
+   "uses": 73,
+   "tags": "div"
+  },
+  {
+   "old": "profile-slider-wrapper",
+   "new": "coverflow_component",
+   "kind": "custom",
+   "group": "Profile (Équipier template)",
+   "note": "min-width: 0; overflow: hidden (bug 2 backstop).",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "employee-list-wrapper",
+   "new": "coverflow_list-wrapper",
+   "kind": "custom",
+   "group": "Profile (Équipier template)",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "employee-slider-wrapper",
+   "new": "coverflow_list",
+   "kind": "custom",
+   "group": "Profile (Équipier template)",
+   "note": "Carries data-yx-coverflow.",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "employee-card",
+   "new": "coverflow_item",
+   "kind": "custom",
+   "group": "Profile (Équipier template)",
+   "note": "",
+   "pages": 1,
+   "uses": 21,
+   "tags": "div"
+  },
+  {
+   "old": "employee-card-link",
+   "new": "coverflow_link",
+   "kind": "custom",
+   "group": "Profile (Équipier template)",
+   "note": "",
+   "pages": 1,
+   "uses": 21,
+   "tags": "a"
+  },
+  {
+   "old": "employee-image",
+   "new": "coverflow_image",
+   "kind": "custom",
+   "group": "Profile (Équipier template)",
+   "note": "",
+   "pages": 1,
+   "uses": 21,
+   "tags": "img"
+  },
+  {
+   "old": "employee-image-background",
+   "new": "coverflow_background",
+   "kind": "custom",
+   "group": "Profile (Équipier template)",
+   "note": "",
+   "pages": 1,
+   "uses": 21,
+   "tags": "div"
+  },
+  {
+   "old": "current-order",
+   "new": "(remove)",
+   "kind": "remove",
+   "group": "Profile (Équipier template)",
+   "note": "Hidden Position div, retired with the coverflow rewrite.",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "item-order",
+   "new": "(remove)",
+   "kind": "remove",
+   "group": "Profile (Équipier template)",
+   "note": "As current-order.",
+   "pages": 1,
+   "uses": 21,
+   "tags": "div"
+  },
+  {
+   "old": "profile-meta-wrapper",
+   "new": "profile_header",
+   "kind": "custom",
+   "group": "Profile (Équipier template)",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "profile-content-wrapper",
+   "new": "profile_body",
+   "kind": "custom",
+   "group": "Profile (Équipier template)",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "profile-text-block",
+   "new": "profile_bio text-rich-text",
+   "kind": "utility",
+   "group": "Profile (Équipier template)",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "profile-links",
+   "new": "profile_links",
+   "kind": "custom",
+   "group": "Profile (Équipier template)",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "profile-email-link",
+   "new": "profile_link",
+   "kind": "custom",
+   "group": "Profile (Équipier template)",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "a"
+  },
+  {
+   "old": "profile-linkedin-link",
+   "new": "profile_link",
+   "kind": "custom",
+   "group": "Profile (Équipier template)",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "a"
+  },
+  {
+   "old": "profile-link-icon",
+   "new": "profile_link-icon",
+   "kind": "custom",
+   "group": "Profile (Équipier template)",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "img"
+  },
+  {
+   "old": "profile-link-text",
+   "new": "profile_link-text",
+   "kind": "custom",
+   "group": "Profile (Équipier template)",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "grey-text-block-wrapper",
+   "new": "profile_callout",
+   "kind": "custom",
+   "group": "Profile (Équipier template)",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "grey-text-block",
+   "new": "profile_callout-text text-rich-text",
+   "kind": "utility",
+   "group": "Profile (Équipier template)",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "contact-page-wrapper",
+   "new": "page-layout_component is-contact",
+   "kind": "combo",
+   "group": "Contact",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "contact-header-cell",
+   "new": "page-layout_header",
+   "kind": "custom",
+   "group": "Contact",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "contact-grid-cell",
+   "new": "page-layout_content",
+   "kind": "custom",
+   "group": "Contact",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "contact-list-wrapper",
+   "new": "contact_list-wrapper",
+   "kind": "custom",
+   "group": "Contact",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "contact-list",
+   "new": "contact_list",
+   "kind": "custom",
+   "group": "Contact",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "contact-item",
+   "new": "contact_item",
+   "kind": "custom",
+   "group": "Contact",
+   "note": "",
+   "pages": 1,
+   "uses": 3,
+   "tags": "div"
+  },
+  {
+   "old": "contact-link",
+   "new": "contact_link",
+   "kind": "custom",
+   "group": "Contact",
+   "note": "",
+   "pages": 1,
+   "uses": 3,
+   "tags": "a"
+  },
+  {
+   "old": "contact-card",
+   "new": "contact_card",
+   "kind": "custom",
+   "group": "Contact",
+   "note": "",
+   "pages": 1,
+   "uses": 3,
+   "tags": "div"
+  },
+  {
+   "old": "contact-location",
+   "new": "contact_location",
+   "kind": "custom",
+   "group": "Contact",
+   "note": "",
+   "pages": 1,
+   "uses": 3,
+   "tags": "div"
+  },
+  {
+   "old": "contact-location-link",
+   "new": "contact_location-link",
+   "kind": "custom",
+   "group": "Contact",
+   "note": "",
+   "pages": 1,
+   "uses": 3,
+   "tags": "a"
+  },
+  {
+   "old": "contact-location-text",
+   "new": "contact_location-text",
+   "kind": "custom",
+   "group": "Contact",
+   "note": "",
+   "pages": 1,
+   "uses": 3,
+   "tags": "div"
+  },
+  {
+   "old": "location-wrapper",
+   "new": "contact_map-link-wrapper",
+   "kind": "custom",
+   "group": "Contact",
+   "note": "",
+   "pages": 1,
+   "uses": 3,
+   "tags": "div"
+  },
+  {
+   "old": "location-link-label",
+   "new": "contact_map-link-label",
+   "kind": "custom",
+   "group": "Contact",
+   "note": "",
+   "pages": 1,
+   "uses": 3,
+   "tags": "div"
+  },
+  {
+   "old": "location-link-pin",
+   "new": "contact_map-link-icon",
+   "kind": "custom",
+   "group": "Contact",
+   "note": "",
+   "pages": 1,
+   "uses": 3,
+   "tags": "img"
+  },
+  {
+   "old": "contact-access",
+   "new": "contact_access",
+   "kind": "custom",
+   "group": "Contact",
+   "note": "",
+   "pages": 1,
+   "uses": 3,
+   "tags": "div"
+  },
+  {
+   "old": "access-title",
+   "new": "contact_access-title",
+   "kind": "custom",
+   "group": "Contact",
+   "note": "",
+   "pages": 1,
+   "uses": 5,
+   "tags": "div"
+  },
+  {
+   "old": "access-point-list",
+   "new": "contact_access-list",
+   "kind": "custom",
+   "group": "Contact",
+   "note": "",
+   "pages": 1,
+   "uses": 5,
+   "tags": "div"
+  },
+  {
+   "old": "access-point",
+   "new": "contact_access-item",
+   "kind": "custom",
+   "group": "Contact",
+   "note": "",
+   "pages": 1,
+   "uses": 8,
+   "tags": "div"
+  },
+  {
+   "old": "access-point-label",
+   "new": "contact_access-label",
+   "kind": "custom",
+   "group": "Contact",
+   "note": "",
+   "pages": 1,
+   "uses": 8,
+   "tags": "div"
+  },
+  {
+   "old": "access-point-link",
+   "new": "contact_access-link",
+   "kind": "custom",
+   "group": "Contact",
+   "note": "",
+   "pages": 1,
+   "uses": 8,
+   "tags": "a"
+  },
+  {
+   "old": "access-point-pin",
+   "new": "contact_access-icon",
+   "kind": "custom",
+   "group": "Contact",
+   "note": "",
+   "pages": 1,
+   "uses": 8,
+   "tags": "img"
+  },
+  {
+   "old": "access-point-parking-icon",
+   "new": "contact_access-icon is-parking",
+   "kind": "combo",
+   "group": "Contact",
+   "note": "",
+   "pages": 1,
+   "uses": 8,
+   "tags": "img"
+  },
+  {
+   "old": "hide",
+   "new": "hide",
+   "kind": "utility",
+   "group": "Contact",
+   "note": "V3 utility, same name.",
+   "pages": 1,
+   "uses": 3,
+   "tags": "img"
+  },
+  {
+   "old": "filters",
+   "new": "filters_component",
+   "kind": "custom",
+   "group": "Contenus filters and pagination",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "form-block",
+   "new": "filters_form-block",
+   "kind": "custom",
+   "group": "Contenus filters and pagination",
+   "note": "Webflow form, so Turnstile attaches (register #16, low priority).",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "filter-form",
+   "new": "filters_form",
+   "kind": "custom",
+   "group": "Contenus filters and pagination",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "form"
+  },
+  {
+   "old": "input-wrapper",
+   "new": "filters_field",
+   "kind": "custom",
+   "group": "Contenus filters and pagination",
+   "note": "",
+   "pages": 1,
+   "uses": 4,
+   "tags": "div"
+  },
+  {
+   "old": "field-label",
+   "new": "filters_label",
+   "kind": "custom",
+   "group": "Contenus filters and pagination",
+   "note": "",
+   "pages": 1,
+   "uses": 4,
+   "tags": "label"
+  },
+  {
+   "old": "search-input",
+   "new": "form_input is-search",
+   "kind": "combo",
+   "group": "Contenus filters and pagination",
+   "note": "V3 form_input + combo.",
+   "pages": 1,
+   "uses": 1,
+   "tags": "input"
+  },
+  {
+   "old": "filter-list",
+   "new": "filters_list",
+   "kind": "custom",
+   "group": "Contenus filters and pagination",
+   "note": "",
+   "pages": 1,
+   "uses": 3,
+   "tags": "div"
+  },
+  {
+   "old": "checkbox-item",
+   "new": "filters_option",
+   "kind": "custom",
+   "group": "Contenus filters and pagination",
+   "note": "Pill checkbox (Figma Tag look).",
+   "pages": 1,
+   "uses": 33,
+   "tags": "label"
+  },
+  {
+   "old": "checkbox",
+   "new": "filters_option-input",
+   "kind": "custom",
+   "group": "Contenus filters and pagination",
+   "note": "",
+   "pages": 1,
+   "uses": 33,
+   "tags": "input"
+  },
+  {
+   "old": "checkbox-label",
+   "new": "filters_option-label",
+   "kind": "custom",
+   "group": "Contenus filters and pagination",
+   "note": "",
+   "pages": 1,
+   "uses": 12,
+   "tags": "span"
+  },
+  {
+   "old": "checkbox-author-label",
+   "new": "filters_option-label is-author",
+   "kind": "combo",
+   "group": "Contenus filters and pagination",
+   "note": "",
+   "pages": 1,
+   "uses": 21,
+   "tags": "span"
+  },
+  {
+   "old": "checkbox-author",
+   "new": "(remove)",
+   "kind": "remove",
+   "group": "Contenus filters and pagination",
+   "note": "Unstyled group combos.",
+   "pages": 1,
+   "uses": 21,
+   "tags": "label"
+  },
+  {
+   "old": "checkbox-subject",
+   "new": "(remove)",
+   "kind": "remove",
+   "group": "Contenus filters and pagination",
+   "note": "As checkbox-author.",
+   "pages": 1,
+   "uses": 9,
+   "tags": "label"
+  },
+  {
+   "old": "checkbox-type",
+   "new": "(remove)",
+   "kind": "remove",
+   "group": "Contenus filters and pagination",
+   "note": "As checkbox-author.",
+   "pages": 1,
+   "uses": 3,
+   "tags": "label"
+  },
+  {
+   "old": "clear-filter",
+   "new": "filters_clear",
+   "kind": "custom",
+   "group": "Contenus filters and pagination",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "a"
+  },
+  {
+   "old": "pagination",
+   "new": "pagination_component",
+   "kind": "custom",
+   "group": "Contenus filters and pagination",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "next",
+   "new": "pagination_next",
+   "kind": "custom",
+   "group": "Contenus filters and pagination",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "a"
+  },
+  {
+   "old": "page-link",
+   "new": "pagination_page",
+   "kind": "custom",
+   "group": "Contenus filters and pagination",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "a"
+  },
+  {
+   "old": "button-primary",
+   "new": "button",
+   "kind": "utility",
+   "group": "Buttons",
+   "note": "V3 button; Theme / Button Primary carries Yulex's dark fill.",
+   "pages": 1,
+   "uses": 1,
+   "tags": "a"
+  },
+  {
+   "old": "button-primary-label",
+   "new": "button_label",
+   "kind": "custom",
+   "group": "Buttons",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "button-primary-icon",
+   "new": "button_icon",
+   "kind": "custom",
+   "group": "Buttons",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "img"
+  },
+  {
+   "old": "button-secondary",
+   "new": "button is-secondary",
+   "kind": "combo",
+   "group": "Buttons",
+   "note": "V3 button is-secondary.",
+   "pages": 4,
+   "uses": 6,
+   "tags": "a"
+  },
+  {
+   "old": "button-secondary-label",
+   "new": "button_label",
+   "kind": "custom",
+   "group": "Buttons",
+   "note": "",
+   "pages": 4,
+   "uses": 6,
+   "tags": "div"
+  },
+  {
+   "old": "button-secondary-icon",
+   "new": "button_icon",
+   "kind": "custom",
+   "group": "Buttons",
+   "note": "",
+   "pages": 4,
+   "uses": 6,
+   "tags": "img"
+  },
+  {
+   "old": "legal-content-wrapper",
+   "new": "legal_component",
+   "kind": "custom",
+   "group": "Legal, 404 and search",
+   "note": "",
+   "pages": 2,
+   "uses": 2,
+   "tags": "div"
+  },
+  {
+   "old": "legal-rich-text",
+   "new": "legal_rich-text text-rich-text",
+   "kind": "utility",
+   "group": "Legal, 404 and search",
+   "note": "",
+   "pages": 2,
+   "uses": 2,
+   "tags": "div"
+  },
+  {
+   "old": "utility-wrapper",
+   "new": "utility-page_component",
+   "kind": "utility",
+   "group": "Legal, 404 and search",
+   "note": "V3 utility page classes.",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "utility-container",
+   "new": "utility-page_wrapper",
+   "kind": "utility",
+   "group": "Legal, 404 and search",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "utility-content",
+   "new": "utility-page_content",
+   "kind": "custom",
+   "group": "Legal, 404 and search",
+   "note": "",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "text-mono",
+   "new": "(remove)",
+   "kind": "remove",
+   "group": "Legal, 404 and search",
+   "note": "Unstyled.",
+   "pages": 1,
+   "uses": 1,
+   "tags": "div"
+  },
+  {
+   "old": "profile-phone-link",
+   "new": "profile_link",
+   "kind": "custom",
+   "group": "Not in the sampled HTML (conditional or empty states)",
+   "note": "Shown only when a phone number exists.",
+   "pages": 0,
+   "uses": 0,
+   "tags": ""
+  },
+  {
+   "old": "profile-quote",
+   "new": "profile_quote",
+   "kind": "custom",
+   "group": "Not in the sampled HTML (conditional or empty states)",
+   "note": "Conditional block.",
+   "pages": 0,
+   "uses": 0,
+   "tags": ""
+  },
+  {
+   "old": "content-video",
+   "new": "detail_video",
+   "kind": "custom",
+   "group": "Not in the sampled HTML (conditional or empty states)",
+   "note": "Conditional on content type.",
+   "pages": 0,
+   "uses": 0,
+   "tags": ""
+  },
+  {
+   "old": "content-audio",
+   "new": "detail_audio",
+   "kind": "custom",
+   "group": "Not in the sampled HTML (conditional or empty states)",
+   "note": "Conditional on content type.",
+   "pages": 0,
+   "uses": 0,
+   "tags": ""
+  },
+  {
+   "old": "empty-state",
+   "new": "(review)",
+   "kind": "review",
+   "group": "Not in the sampled HTML (conditional or empty states)",
+   "note": "Generic empty state.",
+   "pages": 0,
+   "uses": 0,
+   "tags": ""
+  },
+  {
+   "old": "collection-empty-state",
+   "new": "card-grid_empty",
+   "kind": "custom",
+   "group": "Not in the sampled HTML (conditional or empty states)",
+   "note": "Webflow empty state.",
+   "pages": 0,
+   "uses": 0,
+   "tags": ""
+  },
+  {
+   "old": "teammate-empty-state",
+   "new": "card-grid_empty",
+   "kind": "custom",
+   "group": "Not in the sampled HTML (conditional or empty states)",
+   "note": "",
+   "pages": 0,
+   "uses": 0,
+   "tags": ""
+  },
+  {
+   "old": "affiliation-empty-state",
+   "new": "card-grid_empty",
+   "kind": "custom",
+   "group": "Not in the sampled HTML (conditional or empty states)",
+   "note": "",
+   "pages": 0,
+   "uses": 0,
+   "tags": ""
+  },
+  {
+   "old": "expertise-empty-state",
+   "new": "tag-list_empty",
+   "kind": "custom",
+   "group": "Not in the sampled HTML (conditional or empty states)",
+   "note": "",
+   "pages": 0,
+   "uses": 0,
+   "tags": ""
+  },
+  {
+   "old": "post-empty-state",
+   "new": "post-list_empty",
+   "kind": "custom",
+   "group": "Not in the sampled HTML (conditional or empty states)",
+   "note": "",
+   "pages": 0,
+   "uses": 0,
+   "tags": ""
+  },
+  {
+   "old": "post-author-empty-state",
+   "new": "author-list_empty",
+   "kind": "custom",
+   "group": "Not in the sampled HTML (conditional or empty states)",
+   "note": "",
+   "pages": 0,
+   "uses": 0,
+   "tags": ""
+  },
+  {
+   "old": "footer-list-empty-state",
+   "new": "footer_list-empty",
+   "kind": "custom",
+   "group": "Not in the sampled HTML (conditional or empty states)",
+   "note": "",
+   "pages": 0,
+   "uses": 0,
+   "tags": ""
+  },
+  {
+   "old": "employee-list-empty-state",
+   "new": "coverflow_empty",
+   "kind": "custom",
+   "group": "Not in the sampled HTML (conditional or empty states)",
+   "note": "",
+   "pages": 0,
+   "uses": 0,
+   "tags": ""
+  },
+  {
+   "old": "content-section-empty-state",
+   "new": "detail_empty",
+   "kind": "custom",
+   "group": "Not in the sampled HTML (conditional or empty states)",
+   "note": "",
+   "pages": 0,
+   "uses": 0,
+   "tags": ""
+  },
+  {
+   "old": "utility-page-wrap",
+   "new": "utility-page_component",
+   "kind": "custom",
+   "group": "Not in the sampled HTML (conditional or empty states)",
+   "note": "Webflow default utility page classes.",
+   "pages": 0,
+   "uses": 0,
+   "tags": ""
+  },
+  {
+   "old": "utility-page-content",
+   "new": "utility-page_content",
+   "kind": "custom",
+   "group": "Not in the sampled HTML (conditional or empty states)",
+   "note": "",
+   "pages": 0,
+   "uses": 0,
+   "tags": ""
+  },
+  {
+   "old": "utility-page-form",
+   "new": "utility-page_form",
+   "kind": "custom",
+   "group": "Not in the sampled HTML (conditional or empty states)",
+   "note": "",
+   "pages": 0,
+   "uses": 0,
+   "tags": ""
+  },
+  {
+   "old": "text-block-3",
+   "new": "(remove)",
+   "kind": "remove",
+   "group": "Not in the sampled HTML (conditional or empty states)",
+   "note": "Duplicate default name (register #33).",
+   "pages": 0,
+   "uses": 0,
+   "tags": ""
+  },
+  {
+   "old": "previous",
+   "new": "(remove)",
+   "kind": "remove",
+   "group": "Not in the sampled HTML (conditional or empty states)",
+   "note": "Unused.",
+   "pages": 0,
+   "uses": 0,
+   "tags": ""
+  },
+  {
+   "old": "paragraph",
+   "new": "(remove)",
+   "kind": "remove",
+   "group": "Not in the sampled HTML (conditional or empty states)",
+   "note": "Unused global.",
+   "pages": 0,
+   "uses": 0,
+   "tags": ""
+  }
+ ]
+}
