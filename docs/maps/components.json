@@ -1,5 +1,5 @@
 {
- "status": "proposed for Gate 1, 2026-10-23",
+ "status": "approved at Gate 1, Danny 2026-10-26",
  "components": [
   {
    "name": "Global / Styles",
@@ -55,7 +55,7 @@
    "where": "Accueil, Équipe, Contenus, profile, expertise and content templates",
    "classes": "post-card_*, author-list_*, tag-list_*",
    "props": "—",
-   "note": "It holds two nested Collection Lists (authors, expertise tags), which can't live inside a Component. Stays one shared class family, Figma Blog Post. Option: a Component without the nested lists, losing authors and tags on cards."
+   "note": "Placed inside a list item, its author and tag lists would be nested lists inside a Component, which Webflow refuses. Stays one shared class family, Figma Blog Post (decided)."
   },
   {
    "name": "Tag list",
@@ -63,7 +63,7 @@
    "where": "6 pages, 95 instances",
    "classes": "tag-list_*",
    "props": "—",
-   "note": "It is a Collection List. Optional: a small UI / Tag Component for the item inside it (Label, Link). Low value; not proposed."
+   "note": "Mostly nested inside post cards, so it can't be inside a Component there. Optional: a small UI / Tag Component for the item (Label, Link). Low value; not proposed."
   },
   {
    "name": "Recent posts rows",
@@ -71,7 +71,7 @@
    "where": "Accueil, Équipe, profile and expertise templates",
    "classes": "post-rows_*, post-list_*",
    "props": "—",
-   "note": "Three Collection Lists. Its heading is the Section Header Component; the rows stay classes. On templates they become the related-content rows (data-yx-related)."
+   "note": "Lists whose cards hold nested lists, so they can't be inside a Component. Its heading is the Section Header Component; the rows stay classes. On templates they become the related-content rows plus the shared top-up pool (data-yx-related)."
   },
   {
    "name": "UI / Button",

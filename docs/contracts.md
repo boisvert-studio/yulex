@@ -1,6 +1,6 @@
 # Data-attribute contracts
 
-Every attribute the bundle reads or writes, per module. **Status: proposed, for review at Gate 1.** Nothing below is wired in Webflow yet.
+Every attribute the bundle reads or writes, per module. **Status: approved at Gate 1 (Danny, 2026-10-26).** Nothing below is wired in Webflow yet.
 
 Rules for every module:
 
@@ -8,7 +8,7 @@ Rules for every module:
 - **Modules read `data-yx-*` attributes and Webflow's own markers (`w--current`, `w-dyn-empty`), never class names.** Renaming a class in Webflow can't break a script.
 - **State goes out as data attributes** (`data-yx-slot`, `data-yx-tone`, `data-yx-ready`) or the `hidden` attribute. The CSS that styles that state lives in Webflow's global styles embed, so it's in place at first paint, before the deferred bundle runs. A copy of that CSS is kept in `docs/` once written.
 - **No interface text in the bundle.** Labels such as « Précédent » / « Suivant » are Webflow text, so the English locale translates them natively.
-- Attributes go on Collection Lists or plain blocks, never inside a Webflow Component (Collection Lists can't sit inside Components anyway).
+- Attributes go on Collection Lists or plain blocks, never inside a Webflow Component. (A Component can hold a plain Collection List, as the footer does, but not a list nested inside another list, so every list these modules touch sits outside Components.)
 - A missing or malformed contract logs one `console.warn('[yx] …')` and leaves the page usable. No silent `return` on a broken contract.
 
 Breakpoints are Webflow's: desktop ≥ 992 px, tablet 768–991, mobile landscape 480–767, mobile portrait < 480. Modules use `matchMedia` with these values and re-run when a query changes.
@@ -64,7 +64,7 @@ When Finsweet loads more items in the background (`fs-list-load="pagination"`, p
 
 ## related.ts
 
-Profile and expertise pages: three rows (articles, capsules, podcasts) of the content that person wrote or that's filed under that expertise, topped up to 3 with the latest of that type.
+Profile and expertise pages: three rows (articles, capsules, podcasts) of the content that person wrote or that's filed under that expertise, topped up to 3 with the latest of that type. Shared top-up pool (decided, Danny 2026-10-26).
 
 | Attribute | On | Effect |
 |---|---|---|
@@ -72,13 +72,16 @@ Profile and expertise pages: three rows (articles, capsules, podcasts) of the co
 | `data-yx-related-heading` | two headings in the section, values `own` and `latest` | `own` is bound to the person's or expertise's name (« Contenus de … »). The module shows `own` when any row has an own item, else `latest`. |
 | `data-yx-related` | each row wrapper, value `article`, `capsule` or `podcast` | One row. |
 | `data-yx-related-own` | the row's filtered list items wrapper | Read. List settings: Auteur(s) (or Expertise(s)) contains the current item, Type = the row's type, newest first, limit 3. |
-| `data-yx-related-latest` | the row's latest list items wrapper | Read. Type = the row's type, newest first, limit 6 (3 plus up to 3 duplicates of own items). |
-| `hidden` | surplus latest items, and items duplicating an own item (same `href`) | Written, so each row shows exactly 3 when the collection has 3. |
+| `data-yx-related-pool` | one hidden list items wrapper in the section | Read. All Contenus, newest first, limit 30. Its cards are the same post cards as the rows. |
+| `data-yx-related-type` | each pool item (the Collection Item) | Read. Bound to the Type's slug, matching the row values. |
+| `hidden` | rows with no item after the top-up | Written. |
 | `data-yx-ready` | the section | Written. |
 
-**Without the script** (CSS `:has()` in the global embed): if the own list has items, only it shows; if it's empty (`.w-dyn-empty`), the first 3 latest items show. The script adds the top-up and the de-duplication.
+The module moves pool cards into each row, newest first, skipping any whose link (`href`) is already in the row, until the row holds 3. A row the pool can't fill shows what it has; if a type is often short, raise the pool limit.
 
-**Webflow page limits (help centre, checked 2026-10-23):** 40 Collection Lists per page including nested ones, and **10 nested lists per page**. Six lists per template, each card with two nested lists (authors, expertise tags), would make 12 nested lists, over the limit. So: profile-page cards drop the author list and keep expertise tags; expertise-page cards drop the expertise tags and keep authors. Six nested lists each.
+**Without the script** (CSS `:has()` in the global embed): rows show only their own items, a row with none is hidden, the pool stays hidden, and the `latest` heading shows when no row has an own item.
+
+**Webflow page limits (help centre, checked 2026-10-23):** 40 Collection Lists per page including nested ones, and 10 nested lists per page. Today each template has one post list with two nested lists per card (authors, tags): 2 nested. This design has 3 own lists plus the pool, each card with two nested lists: 8 nested, and every card keeps authors and tags.
 
 ## Global styles embed (no module)
 
