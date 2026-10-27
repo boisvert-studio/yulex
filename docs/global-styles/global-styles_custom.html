@@ -1,0 +1,55 @@
+<style>
+/* Yulex custom global styles (Global / Styles > global-styles_custom). Source: github.com/boisvert-studio/yulex docs/global-styles/.
+   Keyed on Client-First classes and data-yx-* attributes (docs/contracts.md). Layout and the dashed border model live in native classes. */
+
+/* Card tones: index modulo 3 = blue, purple, green (Theme > Accent). Scripts may set data-yx-tone instead. */
+.card-grid_item:nth-child(3n+1), [data-yx-tone="0"] { --yx-tone: var(--_theme---accent--tone-1); }
+.card-grid_item:nth-child(3n+2), [data-yx-tone="1"] { --yx-tone: var(--_theme---accent--tone-2); }
+.card-grid_item:nth-child(3n+3), [data-yx-tone="2"] { --yx-tone: var(--_theme---accent--tone-3); }
+
+/* Title swash: highlights cycle blue, purple, green (Figma Decoration order), counted among highlights only.
+   Colours mirror Theme > Accent > swash-1..3 (an SVG data URI can't read a variable): change both together. CMS titles use <code>. */
+.text-style-highlight, .detail_subtitle code {
+  display: inline; background-repeat: no-repeat; background-size: 100% 50%; background-position: center bottom 25%;
+  transition: filter 0.3s ease;
+}
+.text-style-highlight:hover, .detail_subtitle code:hover { filter: brightness(0.5); }
+.text-style-highlight:nth-of-type(3n+1), .detail_subtitle code:nth-of-type(3n+1) { background-image: url('data:image/svg+xml,%3Csvg%20preserveAspectRatio%3D%22none%22%20viewBox%3D%220%200%201024%2043%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%0A%3Cg%20opacity%3D%220.35%22%3E%0A%3Cpath%20d%3D%22M989.803%203.41898e-06C1014.4%200.000521593%201030.6%204.22669%201021.38%207.86134C1010.89%2011.9944%201000.75%2016.9738%201000.75%2020.7608C1000.75%2033.5333%20958.144%2038.9922%20939.149%2040.7918C933.431%2041.3332%20926.786%2041.5216%20920.134%2041.5217H913.923C901.055%2041.5217%20891.24%2041.5235%20880.663%2041.5892C865.484%2041.6836%20849.801%2041.8504%20721.91%2042.0167C592.407%2042.1851%20363.999%2042.341%20243.985%2042.5083C184.858%2042.5908%20155.292%2042.6725%20140.41%2042.7381C136.239%2042.7565%20133.64%2042.7752%20132.153%2042.7854C121.362%2043.0028%20113.282%2043%20110.086%2043H34.2069C9.60372%2042.9997%20-6.60262%2038.7734%202.6215%2035.1387C13.106%2031.0055%2023.258%2026.0263%2023.258%2022.2392C23.2583%209.46634%2065.8661%204.00755%2084.8601%202.20821C90.5791%201.66677%2097.2227%201.47839%20103.875%201.47833H105.147C107.838%201.43191%20110.335%201.39661%20112.587%201.37189C117.989%201.31264%20124.641%201.26941%20133.203%201.23166C150.738%201.15435%20182.426%201.07102%20241.706%200.988373C358.514%200.825516%20595.332%200.658526%20719.779%200.496723C845.835%200.332823%20858.73%200.172901%20870.509%200.0996851C886.89%20-0.00212301%20901.566%203.41898e-06%20913.923%203.41898e-06H989.803Z%22%20fill%3D%22%23007DA7%22/%3E%0A%3C/g%3E%0A%3C/svg%3E'); }
+.text-style-highlight:nth-of-type(3n+2), .detail_subtitle code:nth-of-type(3n+2) { background-image: url('data:image/svg+xml,%3Csvg%20preserveAspectRatio%3D%22none%22%20viewBox%3D%220%200%201024%2043%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%0A%3Cg%20opacity%3D%220.35%22%3E%0A%3Cpath%20d%3D%22M989.803%203.41898e-06C1014.4%200.000521593%201030.6%204.22669%201021.38%207.86134C1010.89%2011.9944%201000.75%2016.9738%201000.75%2020.7608C1000.75%2033.5333%20958.144%2038.9922%20939.149%2040.7918C933.431%2041.3332%20926.786%2041.5216%20920.134%2041.5217H913.923C901.055%2041.5217%20891.24%2041.5235%20880.663%2041.5892C865.484%2041.6836%20849.801%2041.8504%20721.91%2042.0167C592.407%2042.1851%20363.999%2042.341%20243.985%2042.5083C184.858%2042.5908%20155.292%2042.6725%20140.41%2042.7381C136.239%2042.7565%20133.64%2042.7752%20132.153%2042.7854C121.362%2043.0028%20113.282%2043%20110.086%2043H34.2069C9.60372%2042.9997%20-6.60262%2038.7734%202.6215%2035.1387C13.106%2031.0055%2023.258%2026.0263%2023.258%2022.2392C23.2583%209.46634%2065.8661%204.00755%2084.8601%202.20821C90.5791%201.66677%2097.2227%201.47839%20103.875%201.47833H105.147C107.838%201.43191%20110.335%201.39661%20112.587%201.37189C117.989%201.31264%20124.641%201.26941%20133.203%201.23166C150.738%201.15435%20182.426%201.07102%20241.706%200.988373C358.514%200.825516%20595.332%200.658526%20719.779%200.496723C845.835%200.332823%20858.73%200.172901%20870.509%200.0996851C886.89%20-0.00212301%20901.566%203.41898e-06%20913.923%203.41898e-06H989.803Z%22%20fill%3D%22%234E5FA7%22/%3E%0A%3C/g%3E%0A%3C/svg%3E'); }
+.text-style-highlight:nth-of-type(3n+3), .detail_subtitle code:nth-of-type(3n+3) { background-image: url('data:image/svg+xml,%3Csvg%20preserveAspectRatio%3D%22none%22%20viewBox%3D%220%200%201024%2043%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%0A%3Cg%20opacity%3D%220.35%22%3E%0A%3Cpath%20d%3D%22M989.803%203.41898e-06C1014.4%200.000521593%201030.6%204.22669%201021.38%207.86134C1010.89%2011.9944%201000.75%2016.9738%201000.75%2020.7608C1000.75%2033.5333%20958.144%2038.9922%20939.149%2040.7918C933.431%2041.3332%20926.786%2041.5216%20920.134%2041.5217H913.923C901.055%2041.5217%20891.24%2041.5235%20880.663%2041.5892C865.484%2041.6836%20849.801%2041.8504%20721.91%2042.0167C592.407%2042.1851%20363.999%2042.341%20243.985%2042.5083C184.858%2042.5908%20155.292%2042.6725%20140.41%2042.7381C136.239%2042.7565%20133.64%2042.7752%20132.153%2042.7854C121.362%2043.0028%20113.282%2043%20110.086%2043H34.2069C9.60372%2042.9997%20-6.60262%2038.7734%202.6215%2035.1387C13.106%2031.0055%2023.258%2026.0263%2023.258%2022.2392C23.2583%209.46634%2065.8661%204.00755%2084.8601%202.20821C90.5791%201.66677%2097.2227%201.47839%20103.875%201.47833H105.147C107.838%201.43191%20110.335%201.39661%20112.587%201.37189C117.989%201.31264%20124.641%201.26941%20133.203%201.23166C150.738%201.15435%20182.426%201.07102%20241.706%200.988373C358.514%200.825516%20595.332%200.658526%20719.779%200.496723C845.835%200.332823%20858.73%200.172901%20870.509%200.0996851C886.89%20-0.00212301%20901.566%203.41898e-06%20913.923%203.41898e-06H989.803Z%22%20fill%3D%22%231D5F48%22/%3E%0A%3C/g%3E%0A%3C/svg%3E'); }
+.detail_subtitle code {
+  font-family: var(--_base---font-family--heading); font-weight: 400;
+  font-size: var(--font-size--xxlarge); line-height: var(--line-height--xxlarge);
+}
+
+/* Link cards (expertises, À propos): grey until hover, title underlined in the card tone */
+a.link-card_component { filter: grayscale(1); transition: filter 0.3s ease; }
+a.link-card_component:hover { filter: grayscale(0); }
+.link-card_title { text-decoration: underline; text-decoration-color: transparent; transition: text-decoration-color 0.3s ease; }
+a.link-card_component:hover .link-card_title { text-decoration-color: var(--yx-tone); }
+
+/* Person card (Équipe grid, home team): tone background, image zoom, name underline */
+.person-card_background { background-color: var(--yx-tone); }
+.person-card_image-wrapper { overflow: hidden; }
+.person-card_image { transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.person-card_component:hover .person-card_image { transform: scale(1.1); }
+.person-card_name { text-decoration: underline; text-decoration-color: transparent; transition: text-decoration-color 0.3s ease; }
+.person-card_component:hover .person-card_name { text-decoration-color: var(--yx-tone); }
+.person-card_title { text-decoration: none; }
+
+/* Logo card (affiliations) */
+.logo-card_image { transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.logo-card_component:hover .logo-card_image { transform: scale(1.1); }
+
+/* Contenus pagination */
+.pagination_page { background-color: var(--_theme---background--alternate); }
+.pagination_page.w--current { background-color: var(--_theme---background--secondary); text-decoration: none; border: 1px solid var(--_theme---border--primary); }
+
+/* Module state (docs/contracts.md): present at first paint, before the deferred bundle */
+[data-yx-coverflow] > :not([data-yx-slot]) { display: none; }
+[data-yx-coverflow] .coverflow_background { background-color: var(--yx-tone); }
+[data-yx-related-pool] { display: none; }
+[data-yx-related]:not(:has(.w-dyn-item)) { display: none; }
+[data-yx-related-section]:has([data-yx-related-own] .w-dyn-item) [data-yx-related-heading="latest"],
+[data-yx-related-section]:not(:has([data-yx-related-own] .w-dyn-item)) [data-yx-related-heading="own"] { display: none; }
+</style>

@@ -2,3 +2,6 @@ node_modules/
 output/
 # Baselines hold screenshots and text of the live site (people's names and photos): kept locally, never committed.
 baseline/
+# Stage 1+ working files: CMS exports (staff names) and the connector change log. Local only.
+exports/
+changes.jsonl
