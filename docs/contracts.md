@@ -1,6 +1,6 @@
 # Data-attribute contracts
 
-Every attribute the bundle reads or writes, per module. **Status: approved at Gate 1 (Danny, 2026-10-26).** Nothing below is wired in Webflow yet.
+Every attribute the bundle reads or writes, per module. **Status: approved at Gate 1 (Danny, 2026-10-26); amended in stage 3 where marked *v0.1.0*.**
 
 Rules for every module:
 
@@ -24,11 +24,11 @@ Team profile pages: the current person large, two neighbours on each side, wrapp
 | `data-yx-slot` | each visible card | Written: `-2` `-1` `0` `1` `2` (5 cards, ≥ 480 px) or `-1` `0` `1` (3 cards, < 480 px). Cards without it are hidden by CSS. Visible cards are moved into slot order. |
 | `data-yx-tone` | every card | Written: list index modulo 3 (`0` blue, `1` purple, `2` green). Matches the Équipe grid, which colours by the same index under the same sort. |
 | `aria-current="page"`, `tabindex="-1"` | the current card's link | Written. The current card isn't a tab stop that links to itself. |
-| `data-yx-ready` | the root | Written when laid out. `no-current` if no `w--current` link was found: the module warns and lays out from index 0. |
+| `data-yx-ready` | the root | Written when laid out: `true`, or `no-current` if no `w--current` link was found (the module warns and lays out from index 0). |
 
 Retired with this module: the hidden `[data-current-order]` and `[data-order]` divs, the stray `fs-list-element="list"` on the slider list, and the `Position` sort.
 
-CSS in the global embed: `[data-yx-coverflow] > :not([data-yx-slot]) { display: none }` (no flash of 21 cards before the script), slot sizes per breakpoint (72 / 108 / 288 px down to 3 cards within 343 px), tones from the Theme colour variables. The slider wrapper also gets `min-width: 0; overflow: hidden` in its native class as a backstop.
+CSS in the global embed: `[data-yx-coverflow] > :not([data-yx-slot]) { display: none }` (no flash of 21 cards before the script), slot sizes per breakpoint (72 / 108 / 288 px; from 480 to 767 px the same 1 : 1.5 : 4 proportions shrink fluidly so five cards always fit; 56 / 192 px for 3 cards within 343 px) *(v0.1.0: fluid band added, the fixed 56 / 84 / 224 px row is 600 px wide and would clip below 632 px)*, tones from the Theme colour variables. The slider wrapper also gets `min-width: 0; overflow: hidden` in its native class as a backstop.
 
 ## home-team.ts
 
@@ -71,13 +71,13 @@ Profile and expertise pages: three rows (articles, capsules, podcasts) of the co
 | `data-yx-related-section` | the section wrapper | Starts the module. |
 | `data-yx-related-heading` | two headings in the section, values `own` and `latest` | `own` is bound to the person's or expertise's name (« Contenus de … »). The module shows `own` when any row has an own item, else `latest`. |
 | `data-yx-related` | each row wrapper, value `article`, `capsule` or `podcast` | One row. |
-| `data-yx-related-own` | the row's filtered list items wrapper | Read. List settings: Auteur(s) (or Expertise(s)) contains the current item, Type = the row's type, newest first, limit 3. |
+| `data-yx-related-own` | the row's filtered list items wrapper | Read. List settings: Auteur(s) (or Expertise(s)) contains the current item, Type = the row's type, newest first, limit 3. **v0.1.0:** Webflow drops the items wrapper when a list is empty (only `w-dyn-list` > `w-dyn-empty` is rendered), so for an empty row the module creates a bare `div[role=list][data-yx-related-own].w-dyn-items` inside the row's `w-dyn-list`. A bare wrapper has none of the items wrapper's classes, so **the row's layout classes must sit on the Collection List wrapper (`w-dyn-list`) or the row block, not on the items wrapper**; the global styles give `.w-dyn-items` inside a row `display: contents`. |
 | `data-yx-related-pool` | one hidden list items wrapper in the section | Read. All Contenus, newest first, limit 30. Its cards are the same post cards as the rows. |
 | `data-yx-related-type` | each pool item (the Collection Item) | Read. Bound to the Type's slug, matching the row values. |
 | `hidden` | rows with no item after the top-up | Written. |
-| `data-yx-ready` | the section | Written. |
+| `data-yx-ready` | the section | Written: `own` if any row had an own item, else `latest`. The no-script heading rules apply only while it is absent. |
 
-The module moves pool cards into each row, newest first, skipping any whose link (`href`) is already in the row, until the row holds 3. A row the pool can't fill shows what it has; if a type is often short, raise the pool limit.
+The module moves pool cards into each row, newest first, skipping any whose link (`href`: the card itself if it is an anchor, else its first link) is already in the row, until the row holds 3. A row the pool can't fill shows what it has; if a type is often short, raise the pool limit.
 
 **Without the script** (CSS `:has()` in the global embed): rows show only their own items, a row with none is hidden, the pool stays hidden, and the `latest` heading shows when no row has an own item.
 

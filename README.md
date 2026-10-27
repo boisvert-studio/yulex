@@ -32,6 +32,14 @@ openssl dgst -sha384 -binary dist/index.js | openssl base64 -A
 
 Prefix the output with `sha384-`.
 
+## Test
+
+```bash
+pnpm test
+```
+
+Playwright (from `qa/node_modules`) loads fixture markup shaped like Webflow's HTML, injects a fresh build of `src/` and checks each module at 375 / 900 / 1440 px. Fixtures use made-up names only.
+
 ## QA
 
 The QA harness lives in `qa/`. See `qa/README.md`.

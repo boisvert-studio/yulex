@@ -1,6 +1,6 @@
 {
   "name": "yulex",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Custom code for the Yulex Webflow site",
   "homepage": "https://github.com/boisvert-studio/yulex#readme",
   "license": "ISC",
@@ -28,7 +28,8 @@
     "lint:fix": "eslint ./src --fix",
     "check": "tsc --noEmit",
     "format": "prettier --write ./src",
-    "update": "pnpm update -i -L -r"
+    "update": "pnpm update -i -L -r",
+    "test": "node --test tests/"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",

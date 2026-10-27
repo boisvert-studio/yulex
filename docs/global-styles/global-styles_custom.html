@@ -49,11 +49,68 @@ a.link-card_component:hover .link-card_title { text-decoration-color: var(--yx-t
 /* Contenus filters: the active contributor shows the photo in colour (a descendant state, no native class for it) */
 .filters_option.is-author.is-list-active .detail_byline-avatar { background-color: var(--_theme---accent--tone-3); filter: grayscale(0); }
 
-/* Module state (docs/contracts.md): present at first paint, before the deferred bundle */
-[data-yx-coverflow] > :not([data-yx-slot]) { display: none; }
+/* Module state (docs/contracts.md): present at first paint, before the deferred bundle.
+   Webflow's class display rules beat the hidden attribute, so the modules' hidden is restated here.
+   Container rules start with "body" so a list's own class can't outrank them whatever the CSS order. */
+[data-yx-ready][hidden], [data-yx-related][hidden], [data-yx-related-heading][hidden], [data-yx-home-team] > [hidden] { display: none !important; }
+
+/* Coverflow: only slotted cards show (no flash of the whole team), slots size the cards.
+   5 cards from 480 px (slots -2..2), 3 below (slots -1..1). Tone: data-yx-tone sets --yx-tone on the card (top of this file). */
 [data-yx-coverflow] .coverflow_background { background-color: var(--yx-tone); }
+body [data-yx-coverflow] { display: flex; align-items: center; justify-content: center; gap: 48px; min-width: 0; overflow: hidden; }
+[data-yx-coverflow] > :not([data-yx-slot]) { display: none; }
+[data-yx-coverflow] > [data-yx-slot] { position: relative; width: 72px; min-width: 72px; opacity: 0.33; border-radius: 9px; overflow: hidden; cursor: pointer; }
+[data-yx-coverflow] > [data-yx-slot="-1"], [data-yx-coverflow] > [data-yx-slot="1"] { width: 108px; min-width: 108px; border-radius: 13px; }
+[data-yx-coverflow] > [data-yx-slot="0"] { width: 288px; min-width: 288px; opacity: 1; border-radius: 36px; cursor: default; }
+[data-yx-coverflow] > [data-yx-slot]:hover { opacity: 1; }
+[data-yx-coverflow] > [data-yx-slot] img { transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+[data-yx-coverflow] > [data-yx-slot]:hover img { transform: scale(1.1); }
+@media (max-width: 991px) {
+  body [data-yx-coverflow] { gap: 32px; }
+  [data-yx-coverflow] > [data-yx-slot] { width: 64px; min-width: 64px; border-radius: 8px; }
+  [data-yx-coverflow] > [data-yx-slot="-1"], [data-yx-coverflow] > [data-yx-slot="1"] { width: 96px; min-width: 96px; border-radius: 12px; }
+  [data-yx-coverflow] > [data-yx-slot="0"] { width: 256px; min-width: 256px; border-radius: 32px; }
+}
+/* 480-767 px: 5 cards on one unit u (outer 1u, neighbours 1.5u, centre 4u: 56 / 84 / 224 at full size), shrinking so the row always fits.
+   At 480 px that is u = 42, a 440 px row in a 440 px container. */
+@media (max-width: 767px) {
+  body [data-yx-coverflow] { gap: 16px; --yx-unit: min(56px, calc((100vw - 40px - 64px) / 9)); }
+  [data-yx-coverflow] > [data-yx-slot] { width: var(--yx-unit); min-width: var(--yx-unit); border-radius: 7px; }
+  [data-yx-coverflow] > [data-yx-slot="-1"], [data-yx-coverflow] > [data-yx-slot="1"] { width: calc(var(--yx-unit) * 1.5); min-width: calc(var(--yx-unit) * 1.5); border-radius: 10px; }
+  [data-yx-coverflow] > [data-yx-slot="0"] { width: calc(var(--yx-unit) * 4); min-width: calc(var(--yx-unit) * 4); border-radius: 28px; }
+}
+/* Below 480 px three cards: 56 + 192 + 56 + two 16 px gaps = 336, inside the 343 px content width at 375 px.
+   The centre card shrinks on narrower screens so the row never pans. */
+@media (max-width: 479px) {
+  body [data-yx-coverflow] { gap: 16px; }
+  [data-yx-coverflow] > [data-yx-slot="-1"], [data-yx-coverflow] > [data-yx-slot="1"] { width: 56px; min-width: 56px; border-radius: 7px; }
+  [data-yx-coverflow] > [data-yx-slot="0"] { width: min(192px, calc(100vw - 32px - 112px - 32px)); min-width: 0; border-radius: 24px; }
+}
+
+/* Home team: before the script runs, show no more than the tablet count and hold the CTA back, so nothing flashes or jumps.
+   After it, slots place the cards: rows 4 / 5 / 4 from 1280 px (20-column grid), 2 / 3 / 2 from 768 px (6 columns), one column below. */
+[data-yx-home-team]:not([data-yx-ready]) > :nth-child(n+8) { display: none; }
+[data-yx-home-team-cta]:not([data-yx-slot]) { display: none; }
+body [data-yx-home-team] { display: grid; grid-template-columns: 1fr; }
+[data-yx-home-team] > [data-yx-slot] { grid-column: auto; }
+@media (min-width: 768px) {
+  body [data-yx-home-team] { grid-template-columns: repeat(6, 1fr); }
+  [data-yx-home-team] > :is([data-yx-slot="0"], [data-yx-slot="1"], [data-yx-slot="5"], [data-yx-slot="6"]) { grid-column: span 3; }
+  [data-yx-home-team] > :is([data-yx-slot="2"], [data-yx-slot="3"], [data-yx-slot="4"]) { grid-column: span 2; }
+}
+@media (min-width: 1280px) {
+  body [data-yx-home-team] { grid-template-columns: repeat(20, 1fr); }
+  [data-yx-home-team] > :is([data-yx-slot="0"], [data-yx-slot="1"], [data-yx-slot="2"], [data-yx-slot="3"], [data-yx-slot="9"], [data-yx-slot="10"], [data-yx-slot="11"], [data-yx-slot="12"]) { grid-column: span 5; }
+  [data-yx-home-team] > :is([data-yx-slot="4"], [data-yx-slot="5"], [data-yx-slot="6"], [data-yx-slot="7"], [data-yx-slot="8"]) { grid-column: span 4; }
+}
+
+/* Related content: a row shows its own items, then the top-up. The layout classes sit on the Collection List
+   wrapper (w-dyn-list, always rendered), because an empty list drops the items wrapper and the module re-creates a bare one.
+   Without the script: own items only, a row with none is hidden, the pool stays hidden, "latest" shows when no row has an own item. */
+body [data-yx-related] .w-dyn-items { display: contents; }
+[data-yx-related] .w-dyn-empty { display: none; }
 [data-yx-related-pool] { display: none; }
 [data-yx-related]:not(:has(.w-dyn-item)) { display: none; }
-[data-yx-related-section]:has([data-yx-related-own] .w-dyn-item) [data-yx-related-heading="latest"],
-[data-yx-related-section]:not(:has([data-yx-related-own] .w-dyn-item)) [data-yx-related-heading="own"] { display: none; }
+[data-yx-related-section]:not([data-yx-ready]):has([data-yx-related-own] .w-dyn-item) [data-yx-related-heading="latest"],
+[data-yx-related-section]:not([data-yx-ready]):not(:has([data-yx-related-own] .w-dyn-item)) [data-yx-related-heading="own"] { display: none; }
 </style>
