@@ -112,7 +112,7 @@ body [data-yx-home-team] { display: grid; grid-template-columns: 1fr; }
    Without the script: own items only, a row with none is hidden, the pool stays hidden, "latest" shows when no row has an own item. */
 body [data-yx-related] .w-dyn-items { display: contents; }
 [data-yx-related] .w-dyn-empty { display: none; }
-[data-yx-related-pool] { display: none; }
+body [data-yx-related-pool], .w-dyn-list:has(> [data-yx-related-pool]) { display: none; }
 [data-yx-related]:not(:has(.w-dyn-item)) { display: none; }
 [data-yx-related-section]:not([data-yx-ready]):has([data-yx-related-own] .w-dyn-item) [data-yx-related-heading="latest"],
 [data-yx-related-section]:not([data-yx-ready]):not(:has([data-yx-related-own] .w-dyn-item)) [data-yx-related-heading="own"] { display: none; }

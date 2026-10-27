@@ -1,6 +1,6 @@
 // Injects a fresh build into staging pages and reports what each module did. Read-only: GET + a headless browser.
 // Usage: node tests/staging-check.mjs [bundle-path|--build] ; output goes to qa/output/ (git-ignored).
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 
 import { bundle, launch } from './harness.mjs';
 
@@ -8,6 +8,11 @@ const ORIGIN = 'https://yulex-staging.webflow.io';
 const WIDTHS = [375, 900, 1440];
 const LOCALES = ['', '/en-ca'];
 
+// The local CSS is injected too, so a fix can be checked before it is pasted into Global / Styles.
+const css = readFileSync('docs/global-styles/global-styles_custom.html', 'utf8').replace(
+  /<\/?style>/g,
+  ''
+);
 const browser = await launch();
 const script = await bundle();
 
@@ -26,7 +31,12 @@ const targets = [
   { key: 'profile', path: await discover('/equipe', '^/equipe/[^/]+$', 0) },
   { key: 'profile-no-own', path: await discover('/equipe', '^/equipe/[^/]+$', -1) },
   { key: 'expertise', path: '/expertises/litige' },
-  { key: 'content', path: await discover('/contenus', '^/contenu/[^/]+$', 0) },
+  {
+    key: 'content',
+    path: await discover('/contenus', '^/contenu/[^/]+$', 0),
+    // The first article has no English version; this one exists in both languages.
+    paths: { '/en-ca': '/contenu/women-in-law-the-challenges-around-the-world' },
+  },
   { key: 'affiliation', path: '/affiliations/interlegal' },
   { key: 'about-item', path: '/a-propos/notre-adn' },
 ];
@@ -41,7 +51,9 @@ for (const locale of LOCALES) {
       const errors = [];
       page.on('console', (m) => m.type() === 'warning' && warnings.push(m.text()));
       page.on('pageerror', (e) => errors.push(e.message));
-      await page.goto(`${ORIGIN}${locale}${target.path}`, { waitUntil: 'networkidle' });
+      const path = target.paths?.[locale] ?? target.path;
+      await page.goto(`${ORIGIN}${locale}${path}`, { waitUntil: 'networkidle' });
+      await page.addStyleTag({ content: css });
       await page.addScriptTag({ content: script });
       await page.waitForTimeout(600);
       const report = await page.evaluate(() => {
@@ -52,10 +64,20 @@ for (const locale of LOCALES) {
           coverflow: q('[data-yx-coverflow]') && {
             ready: q('[data-yx-coverflow]').getAttribute('data-yx-ready'),
             visible: [...q('[data-yx-coverflow]').children].filter(visible).length,
+            slots: [...q('[data-yx-coverflow]').children]
+              .map((c) => c.getAttribute('data-yx-slot'))
+              .filter(Boolean)
+              .join(','),
           },
           homeTeam: q('[data-yx-home-team]') && {
             ready: q('[data-yx-home-team]').getAttribute('data-yx-ready'),
             visible: [...q('[data-yx-home-team]').children].filter(visible).length,
+            rows: (() => {
+              const tops = [...q('[data-yx-home-team]').children]
+                .filter(visible)
+                .map((c) => Math.round(c.getBoundingClientRect().top));
+              return [...new Set(tops)].map((t) => tops.filter((x) => x === t).length).join('/');
+            })(),
             ctaInList: q('[data-yx-home-team-cta]')?.parentElement === q('[data-yx-home-team]'),
           },
           prevnext: q('[data-yx-prevnext]') && {
@@ -68,8 +90,12 @@ for (const locale of LOCALES) {
             ready: q('[data-yx-related-section]').getAttribute('data-yx-ready'),
             rows: [...document.querySelectorAll('[data-yx-related]')].map((r) => ({
               type: r.getAttribute('data-yx-related'),
-              items: r.querySelectorAll('.w-dyn-item').length,
+              items: [...r.querySelectorAll('[data-yx-related-own]')].reduce(
+                (n, o) => n + o.children.length,
+                0
+              ),
               shown: visible(r),
+              poolVisible: document.querySelector('[data-yx-related-pool]').checkVisibility(),
             })),
           },
         };
