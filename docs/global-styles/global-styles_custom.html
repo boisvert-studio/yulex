@@ -22,9 +22,10 @@
   font-size: var(--font-size--xxlarge); line-height: var(--line-height--xxlarge);
 }
 
-/* Link cards (expertises, À propos): grey until hover, title underlined in the card tone */
-a.link-card_component { filter: grayscale(1); transition: filter 0.3s ease; }
-a.link-card_component:hover { filter: grayscale(0); }
+/* Link cards (expertises, À propos): grey until hover, title underlined in the card tone.
+   Grey only inside the grids: the prev/next fallback cards on the detail templates stay in colour, as on live. */
+.card-grid_list a.link-card_component { filter: grayscale(1); transition: filter 0.3s ease; }
+.card-grid_list a.link-card_component:hover { filter: grayscale(0); }
 .link-card_title { text-decoration: underline; text-decoration-color: transparent; transition: text-decoration-color 0.3s ease; }
 a.link-card_component:hover .link-card_title { text-decoration-color: var(--yx-tone); }
 
@@ -44,6 +45,9 @@ a.link-card_component:hover .link-card_title { text-decoration-color: var(--yx-t
 /* Contenus pagination */
 .pagination_page { background-color: var(--_theme---background--alternate); }
 .pagination_page.w--current { background-color: var(--_theme---background--secondary); text-decoration: none; border: 1px solid var(--_theme---border--primary); }
+
+/* Contenus filters: the active contributor shows the photo in colour (a descendant state, no native class for it) */
+.filters_option.is-author.is-list-active .detail_byline-avatar { background-color: var(--_theme---accent--tone-3); filter: grayscale(0); }
 
 /* Module state (docs/contracts.md): present at first paint, before the deferred bundle */
 [data-yx-coverflow] > :not([data-yx-slot]) { display: none; }
