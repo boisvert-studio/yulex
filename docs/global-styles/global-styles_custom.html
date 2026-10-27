@@ -87,6 +87,9 @@ body [data-yx-coverflow] { display: flex; align-items: center; justify-content: 
   [data-yx-coverflow] > [data-yx-slot="0"] { width: min(192px, calc(100vw - 32px - 112px - 32px)); min-width: 0; border-radius: 24px; }
 }
 
+/* Prev/next bar: hidden until the script has written its links, so there are no dead # links without it. */
+[data-yx-prevnext]:not([data-yx-ready]) { display: none; }
+
 /* Home team: before the script runs, show no more than the tablet count and hold the CTA back, so nothing flashes or jumps.
    After it, slots place the cards: rows 4 / 5 / 4 from 1280 px (20-column grid), 2 / 3 / 2 from 768 px (6 columns), one column below. */
 [data-yx-home-team]:not([data-yx-ready]) > :nth-child(n+8) { display: none; }
