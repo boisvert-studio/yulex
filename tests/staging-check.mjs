@@ -51,10 +51,13 @@ for (const locale of LOCALES) {
       const errors = [];
       page.on('console', (m) => m.type() === 'warning' && warnings.push(m.text()));
       page.on('pageerror', (e) => errors.push(e.message));
+      let served = false;
       const path = target.paths?.[locale] ?? target.path;
       await page.goto(`${ORIGIN}${locale}${path}`, { waitUntil: 'networkidle' });
-      await page.addStyleTag({ content: css });
-      await page.addScriptTag({ content: script });
+      // Once Webflow serves the bundle itself, test exactly what it serves; STAGING_ONLY=1 also skips the local CSS.
+      if (!process.env.STAGING_ONLY) await page.addStyleTag({ content: css });
+      served = await page.evaluate(() => Boolean(document.querySelector('script[src*="yulex@"]')));
+      if (!served) await page.addScriptTag({ content: script });
       await page.waitForTimeout(600);
       const report = await page.evaluate(() => {
         const q = (s) => document.querySelector(s);
