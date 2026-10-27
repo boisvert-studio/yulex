@@ -44,6 +44,12 @@ Every page x locale x width on each requested target.
 6. **webflow.io links**: `a[href]` whose raw source href is absolute and contains `webflow.io`. Relative links that merely resolve to webflow.io on staging are not flagged.
 7. **4xx/5xx links**: every unique http(s) href from all crawled pages of a target (fragments dropped; `mailto:`, `tel:`, `javascript:` and bare `#` skipped), HEAD with GET fallback, 4 at a time with a 250 ms delay, results cached within a run. Anything with status 400+ or unreachable (status 0) is listed. External 403/429/999 (LinkedIn etc.) carry a "may block automated requests" note; they are bot walls, not necessarily broken links. A staging 404 on `/paiement` would be annotated as expected (the payment terminal is served outside Webflow).
 
+### Border sweep (`borders.mjs`)
+
+The border probe only compares cards that share a class, so a CTA cell or a join between two lists can be open or doubled without it noticing. `node borders.mjs` checks every bordered cell instead (post cards, CTAs, grid items, affiliation and link cards, any `w-dyn-item`; nav, footer, coverflow and the related pool left out): each edge must carry exactly one dashed line, whoever draws it. `--templates` adds every profile and expertise page, not only the samples in `pages.json`. Output: `qa/output/borders-<time>.json` and a list of the cells that fail. Target state: 0 open, 0 doubled everywhere.
+
+The grids it guards share one model: a cell draws its top and left line, the outer box draws right and bottom (`post-rows_component`, `affiliation-list`). A cell that also draws its right or bottom, or a container in the middle of a grid that draws a line, doubles it.
+
 ### Border probe
 
 Card grids draw their dashed 2 px borders in different ways (container borders, per-card borders, `:last-child` patches, a separate model on the home page), so the probe never asks who draws a line.
@@ -84,6 +90,8 @@ pages.json         page list and masks
 lib/config.mjs     targets, locales, widths, timings
 lib/capture.mjs    browser capture of one page x locale x width
 lib/inpage.mjs     code that runs inside the page: border probe, h1/landmarks/overflow/links
+lib/cells.mjs      code that runs inside the page: cell-level border sweep
+borders.mjs        border sweep CLI (every bordered cell, single closed lines)
 lib/diff.mjs       pixelmatch diff and report thumbnails
 lib/links.mjs      link status checker
 lib/report.mjs     report.html rendering and red/amber/green rules
