@@ -116,4 +116,9 @@ body [data-yx-related-pool], .w-dyn-list:has(> [data-yx-related-pool]) { display
 [data-yx-related]:not(:has(.w-dyn-item)) { display: none; }
 [data-yx-related-section]:not([data-yx-ready]):has([data-yx-related-own] .w-dyn-item) [data-yx-related-heading="latest"],
 [data-yx-related-section]:not([data-yx-ready]):not(:has([data-yx-related-own] .w-dyn-item)) [data-yx-related-heading="own"] { display: none; }
+/* From 1920 px the capsule row stacks beside the articles (combo is-capsules, as on home) and its wrapper draws the right edge.
+   A capsule card's own 1920 right border (home's rule) would double it, and top-up cards from the pool have none. */
+@media (min-width: 1920px) {
+  [data-yx-related] .post-card_component.is-capsule { border-right-style: none; }
+}
 </style>

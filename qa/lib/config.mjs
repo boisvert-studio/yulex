@@ -9,7 +9,7 @@ export const TARGETS = {
   staging: 'https://yulex-staging.webflow.io',
 };
 export const LOCALES = { fr: '', en: '/en-ca' };
-export const ALL_WIDTHS = [1440, 900, 375];
+export const ALL_WIDTHS = [1920, 1440, 900, 375];
 export const VIEWPORT_HEIGHT = 900;
 export const MAX_SHOT_HEIGHT = 12000; // CSS px; taller pages are cropped and flagged
 export const MOBILE_DSF = 1; // 2 would push the longest pages past Chromium's ~16k px texture limit

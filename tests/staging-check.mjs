@@ -5,7 +5,7 @@ import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { bundle, launch } from './harness.mjs';
 
 const ORIGIN = 'https://yulex-staging.webflow.io';
-const WIDTHS = [375, 900, 1440];
+const WIDTHS = [375, 900, 1440, 1920];
 const LOCALES = ['', '/en-ca'];
 
 // The local CSS is injected too, so a fix can be checked before it is pasted into Global / Styles.

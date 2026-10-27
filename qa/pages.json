@@ -27,7 +27,7 @@
   ],
   "masks": [
     {
-      "selector": ".teammate-list",
+      "selector": ".teammate-list, [data-yx-home-team]",
       "pages": ["home"],
       "reason": "Team grid is shuffled on every load"
     }

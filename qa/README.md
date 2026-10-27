@@ -15,7 +15,7 @@ node run.mjs --compare-baseline --target staging   # fresh staging capture vs qa
 node run.mjs --report-only --target both       # re-render baseline reports from baseline.json (no browsing)
 ```
 
-Flags: `--target live|staging|both`, `--pages <keys or types>`, `--widths 1440,900,375`, `--locales fr,en`, `--baseline`, `--diff` / `--no-diff`, `--compare-baseline`, `--report-only`, `--concurrency 3`.
+Flags: `--target live|staging|both`, `--pages <keys or types>`, `--widths 1920,1440,900,375`, `--locales fr,en`, `--baseline`, `--diff` / `--no-diff`, `--compare-baseline`, `--report-only`, `--concurrency 3`.
 
 - Normal runs write `qa/output/<timestamp>/` with `report.html`, `report.json`, `live/`, `staging/` and `diff/` (git-ignored).
 - `--baseline` writes `qa/baseline/<target>/` with `screens/`, `baseline.json` (every check result, the link results and a `capturedAt` ISO time, no git SHA) plus a report. A run with `--pages/--widths/--locales` merges into the existing baseline instead of replacing it. It stays on this machine and is never committed (it holds screenshots and text of the live site, people included); back it up outside the repo.
@@ -26,7 +26,7 @@ Pages live in `pages.json` (`key`, `type`, FR `path`, optional `expectStatus`, o
 
 ## Capture rules
 
-- Widths 1440 / 900 / 375, viewport height 900. 375 uses `isMobile` + `hasTouch` at device scale factor 1 (a factor of 2 pushes the longest pages past Chromium's ~16k px screenshot limit). All overflow measurements are CSS px.
+- Widths 1920 / 1440 / 900 / 375, viewport height 900. 1920 is Webflow's widest breakpoint (xxl), whose rules nothing below it exercises; check 2560 by hand now and then (`--widths 2560`), since the container caps the layout there. 375 uses `isMobile` + `hasTouch` at device scale factor 1 (a factor of 2 pushes the longest pages past Chromium's ~16k px screenshot limit). All overflow measurements are CSS px.
 - Before each capture: `load`, `networkidle` (15 s timeout, then continue), 1.5 s for Webflow/Finsweet scripts, reduced motion + `transition/animation: none`, lazy images forced eager, a scroll to the bottom and back to the top, fonts and images awaited.
 - Cookie banner (CookieYes): never clicked. These selectors are hidden by injected CSS before measuring and screenshotting: `.cky-consent-container`, `.cky-overlay`, `.cky-modal`, `.cky-btn-revisit-wrapper`.
 - Analytics hosts (Google Analytics/Tag Manager, Meta, LinkedIn, Hotjar, Clarity) are blocked so QA traffic stays out of the client's stats.
@@ -61,7 +61,7 @@ Validated on live: at 375 on `/expertises` every card has an open left edge (9 o
 
 Nondeterministic regions are painted over by Playwright's `mask` option (magenta `#ff00ff`) for the pixel diff. They are listed in `pages.json` under `masks` (`selector`, `pages`, `reason`).
 
-- Home: `.teammate-list` (the team grid is shuffled on every load).
+- Home: `.teammate-list` on live, `[data-yx-home-team]` after the rebuild (the team grid is shuffled on every load).
 
 When a mask applies, a second screenshot `<page>.<locale>.<width>.masked.png` is saved next to the plain one and the diff uses the masked pair; the plain one stays unmasked for inspection. Report thumbnails use the masked image. Stability was checked by re-capturing live against the live baseline: 0 pixels differed on all 102 captures, so no other region needed a mask. Border-probe numbers for the home team grid can still vary slightly between loads because of the shuffle.
 
