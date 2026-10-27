@@ -1,10 +1,24 @@
 // Related-content top-up to 3 items. Self-starts on `[data-yx-related-section]`.
-import { cardLink, children, isReady, warn } from './utils';
+import { children, isReady, warn } from './utils';
 
 const ROW_SIZE = 3;
 const TYPES = ['article', 'capsule', 'podcast'];
 
-const hrefOf = (card: Element) => cardLink(card)?.getAttribute('href') ?? '';
+/**
+ * A card's identity is the link to its item: the first link that isn't inside a nested
+ * Collection List (authors, tags) and isn't a dead `#`. Capsule and podcast cards open with the
+ * author list, so their first link is the author, shared by many cards.
+ */
+const hrefOf = (card: Element) => {
+  const links =
+    card instanceof HTMLAnchorElement ? [card] : Array.from(card.querySelectorAll('a[href]'));
+  const own = links.find((link) => {
+    const list = link === card ? null : link.closest('.w-dyn-list');
+    const href = link.getAttribute('href') ?? '';
+    return (!list || !card.contains(list)) && href !== '' && href !== '#';
+  });
+  return own?.getAttribute('href') ?? '';
+};
 
 export const startRelated = () => {
   const section = document.querySelector<HTMLElement>('[data-yx-related-section]');

@@ -18,7 +18,7 @@ const state = (page) =>
       [...section.querySelectorAll('[data-yx-related]')].map((row) => [
         row.getAttribute('data-yx-related'),
         {
-          links: [...row.querySelectorAll('.w-dyn-item a')].map((a) => a.getAttribute('href')),
+          links: [...row.querySelectorAll('a.post-title')].map((a) => a.getAttribute('href')),
           shown: getComputedStyle(row).display !== 'none',
           hidden: row.hidden,
           sameList: new Set([...row.querySelectorAll('.w-dyn-item')].map((i) => i.parentElement))
@@ -100,6 +100,19 @@ describe('related content', () => {
     const s = await state(page);
     assert.equal(s.rows.article.sameList, 1);
     assert.equal(s.rows.capsule.sameList, 1);
+    await page.context().close();
+  });
+
+  it('tops up cards that share a first (author) link: identity is the item link, not the byline', async () => {
+    const page = await open(browser, related({ byline: true }), { script });
+    const s = await state(page);
+    assert.deepEqual(s.rows.capsule.links, ['/capsule-20', '/capsule-21', '/capsule-22']);
+    assert.deepEqual(s.rows.podcast.links, ['/podcast-30', '/podcast-31', '/podcast-32']);
+    const own = await open(browser, related({ byline: true, own: { capsule: [20] } }), { script });
+    // The own card /capsule-20 is skipped in the pool by its item link; the shared author is not a duplicate.
+    assert.deepEqual((await state(own)).rows.capsule.links, ['/capsule-20', '/capsule-21', '/capsule-22']);
+    assert.deepEqual(page.warnings, []);
+    await own.context().close();
     await page.context().close();
   });
 

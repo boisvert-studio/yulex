@@ -77,7 +77,7 @@ Profile and expertise pages: three rows (articles, capsules, podcasts) of the co
 | `hidden` | rows with no item after the top-up | Written. |
 | `data-yx-ready` | the section | Written: `own` if any row had an own item, else `latest`. The no-script heading rules apply only while it is absent. |
 
-The module moves pool cards into each row, newest first, skipping any whose link (`href`: the card itself if it is an anchor, else its first link) is already in the row, until the row holds 3. A row the pool can't fill shows what it has; if a type is often short, raise the pool limit.
+The module moves pool cards into each row, newest first, skipping any whose item link (`href`: the card itself if it is an anchor, else its first link outside a nested Collection List and not `#`; capsule and podcast cards open with the author list, so their first link is shared) is already in the row, until the row holds 3. A row the pool can't fill shows what it has; if a type is often short, raise the pool limit.
 
 **Without the script** (CSS `:has()` in the global embed): rows show only their own items, a row with none is hidden, the pool stays hidden, and the `latest` heading shows when no row has an own item.
 

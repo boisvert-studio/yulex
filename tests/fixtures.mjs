@@ -66,8 +66,14 @@ export const prevNext = ({ n = 5, current = 0, loadMore = false, bar = true } = 
     ).join('')}</div></div>`
   );
 
-const post = (type, i) =>
-  `<div role="listitem" class="w-dyn-item post" data-yx-related-type="${type}"><a href="/${type}-${i}">${type} ${i}</a></div>`;
+// With `byline`, the card opens with a nested author list like capsule and podcast cards do, so the
+// first link in the card is the author, shared by every card of that author.
+const post = (type, i, byline = false) =>
+  `<div role="listitem" class="w-dyn-item post" data-yx-related-type="${type}">${
+    byline
+      ? '<div class="w-dyn-list"><div role="list" class="w-dyn-items"><div role="listitem" class="w-dyn-item"><a href="/equipe/shared-author">Shared Author</a></div></div></div>'
+      : ''
+  }<a class="post-title" href="/${type}-${i}">${type} ${i}</a></div>`;
 const own = (type, items) =>
   items.length
     ? `<div role="list" data-yx-related-own class="w-dyn-items">${items.map((i) => post(type, i).replace(' data-yx-related-type="' + type + '"', '')).join('')}</div>`
@@ -80,10 +86,11 @@ const own = (type, items) =>
 export const related = ({
   own: ownItems = {},
   pool = { article: [10, 11, 12, 13], capsule: [20, 21, 22, 23], podcast: [30, 31, 32, 33] },
+  byline = false,
 } = {}) => {
   const types = ['article', 'capsule', 'podcast'];
   const poolHtml = Array.from({ length: 4 }, (_, k) =>
-    types.map((t) => (pool[t][k] === undefined ? '' : post(t, pool[t][k]))).join('')
+    types.map((t) => (pool[t][k] === undefined ? '' : post(t, pool[t][k], byline))).join('')
   ).join('');
   return page(
     `<section data-yx-related-section><h2 data-yx-related-heading="own">Own heading</h2><h2 data-yx-related-heading="latest">Latest heading</h2>${types

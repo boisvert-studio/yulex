@@ -6,7 +6,12 @@ Semver. Each tag is a build of `dist/index.js`, served by jsDelivr at that tag.
 
 | Tag | Where | Date | Notes |
 |---|---|---|---|
+| v0.1.1 | staging | 2026-10-27 | Related top-up identifies a card by its item link, not its first (author) link |
 | v0.1.0 | staging | 2026-10-27 | First bundle: coverflow, home team, previous/next bar, related content |
+
+## v0.1.1 (2026-10-27)
+
+- `related`: a card is identified by its item link (the first link outside a nested list, not `#`), not its first link. Capsule and podcast cards open with the author link, so a pool card that shared an author with a row card was skipped as a duplicate and rows stayed short. Test with two pool cards sharing an author.
 
 ## v0.1.0 (2026-10-27)
 
