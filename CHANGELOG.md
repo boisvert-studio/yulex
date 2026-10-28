@@ -6,8 +6,13 @@ Semver. Each tag is a build of `dist/index.js`, served by jsDelivr at that tag.
 
 | Tag | Where | Date | Notes |
 |---|---|---|---|
+| v0.1.2 | staging | 2026-10-28 | `dates`: French month names on French pages (article byline) |
 | v0.1.1 | staging | 2026-10-27 | Related top-up identifies a card by its item link, not its first (author) link |
 | v0.1.0 | staging | 2026-10-27 | First bundle: coverflow, home team, previous/next bar, related content |
+
+## v0.1.2 (2026-10-28)
+
+- `dates`: an element marked `data-yx-date` (the article byline date, bound with the format `MMMM D, YYYY`) is rewritten with `Intl.DateTimeFormat` in the page's `<html lang>`, so French pages read « 22 octobre 2021 » instead of Webflow's English « October 22, 2021 ». English pages are untouched. Webflow's date format has no locale, so there is no native fix.
 
 ## v0.1.1 (2026-10-27)
 

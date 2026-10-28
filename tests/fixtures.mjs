@@ -103,3 +103,10 @@ export const related = ({
       )}<div class="w-dyn-list"><div role="list" data-yx-related-pool class="w-dyn-items">${poolHtml}</div></div></section>`
   );
 };
+
+/** An article byline date as Webflow prints it, in the given page language. */
+export const date = ({ lang = 'fr-CA', text = 'October 22, 2021' } = {}) =>
+  page(`<div class="detail_byline-text" data-yx-date>${text}</div>`).replace(
+    '<html>',
+    `<html lang="${lang}">`
+  );

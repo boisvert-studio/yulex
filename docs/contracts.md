@@ -83,6 +83,17 @@ The module moves pool cards into each row, newest first, skipping any whose item
 
 **Webflow page limits (help centre, checked 2026-10-23):** 40 Collection Lists per page including nested ones, and 10 nested lists per page. Today each template has one post list with two nested lists per card (authors, tags): 2 nested. This design has 3 own lists plus the pool, each card with two nested lists: 8 nested, and every card keeps authors and tags.
 
+## dates.ts
+
+French month names on French pages. Webflow's date format has no locale: a bound CMS date prints « October 22, 2021 » on every page. *(v0.1.2)*
+
+| Attribute | On | Effect |
+|---|---|---|
+| `data-yx-date` | a text element bound to a CMS date with the format `MMMM D, YYYY` (the article byline) | Read. On a page whose `<html lang>` is not English, the text is rewritten with `Intl.DateTimeFormat(lang)` (« 22 octobre 2021 »). On English pages it is left as is. |
+| `data-yx-ready` | the same element | Written once rewritten (or confirmed English). |
+
+The page language comes from `<html lang>`, which Webflow sets per locale (`fr-CA`, `en-CA`). No month names are shipped for display: the English names are only used to read the printed date back, and the date is built in UTC so the day never shifts. Text that is not « Month D, YYYY » logs one `[yx]` warning and stays as printed. Without the script the French pages show Webflow's English text, as before.
+
 ## Global styles embed (no module)
 
 CSS only, keyed on classes, so it isn't part of the attribute contract: the title swash (Figma order blue, purple, green, counted with `:nth-of-type`), the hover and underline rules, the dashed border model, and the module state CSS above. It lives in one site-wide embed, per Client-First.
