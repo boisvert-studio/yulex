@@ -6,6 +6,7 @@ Semver. Each tag is a build of `dist/index.js`, served by jsDelivr at that tag.
 
 | Tag | Where | Date | Notes |
 |---|---|---|---|
+| v0.1.3 | production | 2026-11-26 | Click-to-load YouTube (`video`) on the Contenu template: Code Embed `data-yx-video` replaces the Video element (same condition, class `detail_video`, EN link text localised). Registered as `yulexbundle` 0.1.3 and applied to the site footer through the API; published to staging, checked (56 captures, no regressions), then to www.yulex.ca and yulex.ca. Clean-browser check after publish: no YouTube request or cookie before a click |
 | v0.1.2 | production | 2026-10-28 | Cleanup release: Client-First V3 rebuild with the four modules (coverflow, home team, previous/next bar, related content) and `dates`; the footer loads this tag from jsDelivr. Published to www.yulex.ca and yulex.ca (redirect) at 02:20 UTC; Global / Styles embed at repo `aef37d7` |
 | v0.1.2 | staging | 2026-10-28 | `dates`: French month names on French pages (article byline) |
 | v0.1.1 | staging | 2026-10-27 | Related top-up identifies a card by its item link, not its first (author) link |
