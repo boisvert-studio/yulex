@@ -3,6 +3,7 @@ import { startDates } from './dates';
 import { startHomeTeam } from './home-team';
 import { startPrevNext } from './prevnext';
 import { startRelated } from './related';
+import { startVideo } from './video';
 
 window.Webflow ||= [];
 window.Webflow.push(() => {
@@ -12,4 +13,5 @@ window.Webflow.push(() => {
   startHomeTeam();
   startPrevNext();
   startRelated();
+  startVideo();
 });

@@ -11,6 +11,10 @@ Semver. Each tag is a build of `dist/index.js`, served by jsDelivr at that tag.
 | v0.1.1 | staging | 2026-10-27 | Related top-up identifies a card by its item link, not its first (author) link |
 | v0.1.0 | staging | 2026-10-27 | First bundle: coverflow, home team, previous/next bar, related content |
 
+## v0.1.3 (2026-11-26)
+
+- `video`: click-to-load YouTube on the Contenu template (`data-yx-video`). Replaces Webflow's Video element, whose Embedly-wrapped iframe CookieYes couldn't block: 17 capsules set five YouTube cookies before any consent choice and kept them after « Tout rejeter » (found by the cookie check of 2026-11-26). Now nothing loads from youtube.com before a click, and the player is `youtube-nocookie.com`. The module injects its own style tag, so the fix needs one Designer edit (the Embed), not a Global / Styles paste too.
+
 ## v0.1.2 (2026-10-28)
 
 - `dates`: an element marked `data-yx-date` (the article byline date, bound with the format `MMMM D, YYYY`) is rewritten with `Intl.DateTimeFormat` in the page's `<html lang>`, so French pages read « 22 octobre 2021 » instead of Webflow's English « October 22, 2021 ». English pages are untouched. Webflow's date format has no locale, so there is no native fix.

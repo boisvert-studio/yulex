@@ -94,6 +94,17 @@ French month names on French pages. Webflow's date format has no locale: a bound
 
 The page language comes from `<html lang>`, which Webflow sets per locale (`fr-CA`, `en-CA`). No month names are shipped for display: the English names are only used to read the printed date back, and the date is built in UTC so the day never shifts. Text that is not « Month D, YYYY » logs one `[yx]` warning and stays as printed. Without the script the French pages show Webflow's English text, as before.
 
+## video.ts
+
+Click-to-load YouTube on the Contenu template. Webflow's Video element wraps YouTube in an Embedly iframe that CookieYes can't recognise or hold back, so the player set YouTube cookies before any consent choice and kept them after « Tout rejeter ». *(v0.1.3)*
+
+| Attribute | On | Effect |
+|---|---|---|
+| `data-yx-video` | an Embed holder whose value is bound to the CMS field « Lien YouTube »; inside it, one fallback link to the same URL | Read. The YouTube id is taken from a youtu.be, watch, embed or shorts URL. The holder is emptied and gets a button with the video thumbnail (`i.ytimg.com`, no cookies); a click replaces it with the `youtube-nocookie.com` player (autoplay). |
+| `data-yx-ready` | the same holder | Written once the button is in place. |
+
+The fallback link's text is the button's accessible label and the player's title, so no interface text ships in the bundle; localise it in the Embed. The module injects its own small `<style id="yx-video-style">` (16:9 box, play badge), an exception to « state CSS lives in the Global / Styles embed » so the fix needs one Designer edit, not two. A URL that isn't YouTube logs one `[yx]` warning and keeps the fallback link. Without the script, visitors get the link to YouTube and nothing loads from YouTube on the page.
+
 ## Global styles embed (no module)
 
 CSS only, keyed on classes, so it isn't part of the attribute contract: the title swash (Figma order blue, purple, green, counted with `:nth-of-type`), the hover and underline rules, the dashed border model, and the module state CSS above. It lives in one site-wide embed, per Client-First.

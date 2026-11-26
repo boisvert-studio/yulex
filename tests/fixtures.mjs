@@ -110,3 +110,9 @@ export const date = ({ lang = 'fr-CA', text = 'October 22, 2021' } = {}) =>
     '<html>',
     `<html lang="${lang}">`
   );
+
+/** The Contenu template's video Embed: a fallback link inside a data-yx-video holder. */
+export const video = ({
+  url = 'https://youtu.be/9sfH0e-2iuo',
+  label = 'Voir la vidéo sur YouTube',
+} = {}) => page(`<div data-yx-video="${url}"><a href="${url}">${label}</a></div>`);
